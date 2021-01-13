@@ -1,3 +1,24 @@
-.font-weight-bold{
-  background-color: red;
+body{
+  background-color: $dark-blue;
+  margin-top: 200px;
+  color:white;
+}
+
+.logo {
+  border-radius: 500px;
+  background-color: white;
+  box-shadow: 1px 1px 8px 4px lightgrey;
+  color: $dark-blue;
+  height: 120px;
+  width: 120px;
+  margin: 40px 0 0 40px;
+  div {
+    font-size: 75px;
+    font-weight: bold;
+  }
+}
+
+.connection{
+  margin: 40px 40px 0 0;
+  font-size: 50px;
 }
