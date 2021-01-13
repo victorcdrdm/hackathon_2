@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inviter un ami{% endblock %}
+
+{% block body %}
+
+    <h1>Trouve ton ami</h1>
+
+    <div class="form-search">
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+        <button>Rechercher</button>
+        {{ form_end(form) }}
+    </div>
+    <div class="list">
+        {% for friend in friends %}
+            <ul>
+            <li>{{ friend.username }}</li>
+            </ul>
+        {% endfor %}
+    </div>
+
+    <button class="btn">Inviter un inconnu</button>
+
+{% endblock %}

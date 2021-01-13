@@ -1,0 +1,42 @@
+h1 {
+  font-family: Chilanka;
+  font-weight: bold;
+  color: $light-blue;
+  text-align: center;
+  margin-bottom: 1em;
+  font-size: 7em;
+}
+.form-search{
+  margin-bottom: 5em;
+  height: 5em;
+}
+.list {
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+
+}
+li{
+  list-style: none;
+  font-size: 2em;
+}
+form{
+  display: flex;
+  flex-direction: row;
+  margin-right: 10em;
+  margin-left: 10em;
+  justify-content: space-around;
+  input{
+    border-radius: 15px;
+    height: 3em;
+    width: 23em;
+  }
+  button{
+    background-color: $green;
+    color: $dark-blue;
+    border-radius: 20px;
+    width: 10em;
+
+
+  }
+}
