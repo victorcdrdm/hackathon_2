@@ -1,0 +1,34 @@
+.my-profile {
+
+  text-align: center;
+
+  h1 {
+    color : $light-blue
+  }
+
+  h2 {
+    font-size: medium;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .score {
+    display: flex;
+  }
+
+  .logo-banner {
+    background-color: white;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin : auto;
+  }
+
+  img {
+    width: 75%;
+    margin: 15px;
+  }
+
+}

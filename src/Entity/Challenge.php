@@ -18,7 +18,7 @@ class Challenge
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="challenges")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="creatorChallenges")
      * @ORM\JoinColumn(nullable=false)
      */
     private $creator;
