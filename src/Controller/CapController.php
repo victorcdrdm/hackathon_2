@@ -24,14 +24,14 @@ class CapController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="_new")
+     * @Route("/friends", name="_friends")
      */
     public function new(Request $request): Response
     {
         $form = $this->createForm(DefiType::class);
         $form->handleRequest($request);
 
-        return $this->render('cap/new.html.twig', [
+        return $this->render('cap/friends.html.twig', [
             'form' => $form->createView(),
        ]);
     }
@@ -42,6 +42,6 @@ class CapController extends AbstractController
     public function alea(): Response
     {
 
-        return $this->redirectToRoute('profile');
+        return $this->redirectToRoute('cap_unknown');
     }
 }
