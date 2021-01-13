@@ -18,7 +18,22 @@ body{
   }
 }
 
-.connection{
+.connection {
   margin: 40px 40px 0 0;
   font-size: 50px;
+  color: white;
+
+  a {
+    text-decoration: none;
+    color: white;
+
+    &:hover {
+      font-weight: bold;
+      color: white;
+    }
+  }
+}
+
+.logo-link:hover {
+  text-decoration: none;
 }

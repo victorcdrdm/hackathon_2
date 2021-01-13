@@ -1,13 +1,14 @@
 <?php
 
 
-namespace App\Fixtures;
+namespace App\DataFixtures;
 
 
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Faker;
 
 class UserFixtures extends Fixture
 {
@@ -19,6 +20,7 @@ class UserFixtures extends Fixture
     }
     public function load(ObjectManager $manager)
     {
+
         $claire = new User();
         $claire->setUsername('claire');
         $claire->setRoles(['ROLE_USER']);
@@ -29,6 +31,7 @@ class UserFixtures extends Fixture
         ));
 
         $manager->persist($claire);
+        $this->addReference('user_46', $claire);
 
         $aude = new User();
         $aude->setUsername('aude');
@@ -40,6 +43,7 @@ class UserFixtures extends Fixture
         ));
 
         $manager->persist($aude);
+        $this->addReference('user_47', $aude);
 
         $benji = new User();
         $benji->setUsername('benjamin');
@@ -51,6 +55,8 @@ class UserFixtures extends Fixture
         ));
 
         $manager->persist($benji);
+        $this->addReference('user_48', $benji);
+
 
         $victor = new User();
         $victor->setUsername('victor');
@@ -62,11 +68,11 @@ class UserFixtures extends Fixture
         ));
 
         $manager->persist($victor);
-
-
+        $this->addReference('user_49', $victor);
 
         // Sauvegarde des 2 nouveaux utilisateurs :
         $manager->flush();
     }
-
 }
+
+
