@@ -9,7 +9,7 @@
     <div class="form-search">
         {{ form_start(form) }}
             {{ form_widget(form) }}
-        <button>Rechercher</button>
+        <button class="search-btn">Rechercher</button>
         {{ form_end(form) }}
     </div>
     <div class="list">
@@ -19,7 +19,7 @@
             </ul>
         {% endfor %}
     </div>
-
-    <button class="btn">Inviter un inconnu</button>
-
+    <div class="btn-div">
+        <button class="invite-btn">Inviter un inconnu</button>
+    </div>
 {% endblock %}
