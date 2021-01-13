@@ -2,15 +2,34 @@
   display: flex;
   flex-direction: column;
   margin: auto;
-  background-color: white;
+  //background-color: white;
   width: 200px;
   height : 75px;
-  color: $primary;
+  //color: $primary;
   text-align: center;
   border-radius: 20px;
+  /**/
+  background-image: linear-gradient(to left, #2F06F3 0%,  #09b175 51%, #2F06F3  100%);
+  //margin: 2em;
+  //text-align: center;
+  font-size: 30px;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  //border-radius: 60px;
+  //display: block;
+  //width: 9em;
+  //height:1.6em;
+  &:hover {
+    background-position: right center;
+    color: white;
+    text-decoration: none;
+  }
   a{
     margin-top: 21px;
     font-size: 20px;
+    color:white;
+    text-decoration: none;
   }
 }
 .btn-margin {
