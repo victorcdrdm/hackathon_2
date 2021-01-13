@@ -28,7 +28,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="json")
      */
-    private $roles = [];
+    private $roles = ['ROLE_USER'];
 
     /**
      * @var string The hashed password
@@ -39,7 +39,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="integer")
      */
-    private $score;
+    private $score = 0;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
