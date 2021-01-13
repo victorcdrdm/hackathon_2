@@ -8,17 +8,17 @@
     {% if app.user %}
 
         <div class="my-profile">
-            <h1> Mes défis : </h1>
+            <h1 class="m-0"> Mes défis : </h1>
             <div class="container-fluid score">
                 <div class="logo-banner">
                     <img class="" src="{{ asset('build/images/banner-star.svg') }}" alt="banner-star"/>
                 </div>
-                <h2>Ton score : {{ app.user.score }} </h2>
+                <h2>Ton score : {{ app.user.score }}points </h2>
 
                 <div class="logo-banner">
                     <img class="" src="{{ asset('build/images/ranking.svg') }}" alt="banner-star"/>
                 </div>
-                <h2>Tu es : {{ app.user.rate }}ème </h2>
+                <h2>Tu es {{ app.user.rate }}ème </h2>
             </div>
             <div>
                 <h3>à relever :</h3>
@@ -39,20 +39,21 @@
             <div>
                 <h3>accomplis :</h3>
 
+                <ul>
                 {% for creatorChallenge in app.user.creatorChallenges %}
                     {% if creatorChallenge.isSuccess %}
-                        <p>{{ creatorChallenge.defi.title }}</p>
+                        <li>{{ creatorChallenge.defi.title }}</li>
                     {% endif %}
                 {% endfor %}
 
                 {% for catcherChallenge in app.user.catcherChallenges %}
                     {% if catcherChallenge.isSuccess %}
-                        <p>{{ catcherChallenge.defi.title }}</p>
+                        <li>{{ catcherChallenge.defi.title }}</li>
                     {% endif %}
                 {% endfor %}
-
+                </ul>
             </div>
-            <a href="#"> + </a>
+            <a href="#" class="link-new-game"> + </a>
         </div>
     {% else %}
         <p> Il faut d'abord se connecter</p>
