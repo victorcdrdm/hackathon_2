@@ -1,3 +1,30 @@
-.welcome-body{
-  background-color: linear-gradient(0.25turn, $dark-blue, $mid-dark-blue, $dark-blue);
+.btn-home{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  background-color: white;
+  width: 400px;
+  height : 150px;
+  color: $primary;
+  text-align: center;
+  border-radius: 20px;
+  a{
+    margin-top: 41px;
+    font-size: 40px;
+  }
+}
+.btn-margin {
+  margin-top: 120px;
+}
+.h1-home{
+  color: white;
+  font-weight: bold;
+  font-size: 80px;
+  text-align: center;
+}
+
+.h2-home {
+  color: white;
+  font-size: 70px;
+  text-align: center;
 }
