@@ -1,7 +1,29 @@
-{% block title %}Home{% endblock %}
 
-{% block body %}
-<div class="body-home-index">
 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
+</head>
+
+<body>
+<div class="margin-top" >
+<h1 class="h1-home mt-5 mb-5">Cap ou pas Cap</h1>
+<h2 class="h2-home mt-5 mb-5">Covid aplication play
+    <div class="btn-margin">
+        <div class="btn-home mt-5 mb-5">
+            <a href="#">S'inscrire</a>
+        </div>
+    </div>
+    <div class="btn-margin">
+        <div class="btn-home mt-5">
+            <a href="{{ path('app_login') }}">Se connecter</a>
+        </div>
+    </div>
 </div>
-{% endblock %}
+{% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
+</body>
+</html>
+
