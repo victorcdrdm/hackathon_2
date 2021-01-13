@@ -38,3 +38,14 @@
 .infos-group {
   margin: 3vh 6vh;
 }
+
+.unknown-validator {
+  margin-top: 10vh;
+}
+
+.btn-simple {
+  @extend .btn-home;
+  justify-content: center;
+  align-content: center;
+  margin: 30px;
+}
