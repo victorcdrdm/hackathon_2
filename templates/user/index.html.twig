@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes défis !{% endblock %}
+
+
+{% block body %}
+
+    {% if app.user %}
+
+        <div class="my-profile">
+            <h1> Mes défis : </h1>
+            <div class="container-fluid score">
+                <div class="logo-banner">
+                    <img class="" src="{{ asset('build/images/banner-star.svg') }}" alt="banner-star"/>
+                </div>
+                <h2>Ton score : {{ app.user.score }} </h2>
+
+                <div class="logo-banner">
+                    <img class="" src="{{ asset('build/images/ranking.svg') }}" alt="banner-star"/>
+                </div>
+                <h2>Tu es : {{ app.user.rate }}ème </h2>
+            </div>
+            <div>
+                <h3>à relever :</h3>
+                <ul>
+                    {% for catcherChallenge in app.user.catcherChallenges %}
+                        <li>{{ catcherChallenge.defi.title }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div>
+                <h3>lancés :</h3>
+                <ul>
+                    {% for creatorChallenge in app.user.creatorChallenges %}
+                        <li>{{ creatorChallenge.defi.title }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div>
+                <h3>accomplis :</h3>
+
+                {% for creatorChallenge in app.user.creatorChallenges %}
+                    {% if creatorChallenge.isSuccess %}
+                        <p>{{ creatorChallenge.defi.title }}</p>
+                    {% endif %}
+                {% endfor %}
+
+                {% for catcherChallenge in app.user.catcherChallenges %}
+                    {% if catcherChallenge.isSuccess %}
+                        <p>{{ catcherChallenge.defi.title }}</p>
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+            <a href="#"> + </a>
+        </div>
+    {% else %}
+        <p> Il faut d'abord se connecter</p>
+        <a href="{{ path('app_login') }}">Se connecter</a>
+    {% endif %}
+
+{% endblock %}
