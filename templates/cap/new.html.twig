@@ -8,6 +8,8 @@
     {{ form_widget(form) }}
     {{ form_end(form) }}
     <div class="defi-alea d-flex justify-content-center align-items-center">
-        <div>Choisir un défi aléatoirement</div>
+        <form action="{{ path('cap_alea') }}">
+            <button>Choisir un défi au hasard</button>
+        </form>
     </div>
 {% endblock %}

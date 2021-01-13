@@ -9,12 +9,22 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/cap", name="cap_")
+ * @Route("/cap", name="cap")
  */
 class CapController extends AbstractController
 {
     /**
-     * @Route("/new", name="new")
+     * @Route("/index", name="")
+     */
+    public function index(): Response
+    {
+
+        return $this->render('cap/index.html.twig', [
+        ]);
+    }
+
+    /**
+     * @Route("/new", name="_new")
      */
     public function new(Request $request): Response
     {
@@ -27,10 +37,11 @@ class CapController extends AbstractController
     }
 
     /**
-     * @Route("/alea", name="alea")
+     * @Route("/alea", name="_alea")
      */
     public function alea(): Response
     {
-        return $this->redirectToRoute('program_index');
+
+        return $this->redirectToRoute('profile');
     }
 }
