@@ -4,41 +4,36 @@ h1 {
   color: $light-blue;
   text-align: center;
   margin-bottom: 1.5em;
-  margin-top: 3em;
-  font-size: 8em;
+  margin-top: 2.5em;
+  font-size: 3.5em;
 }
 .form-search{
-  margin-bottom: 10em;
-  height: 6em;
+  margin-bottom: 5em;
+  height: 3em;
   form{
     display: flex;
     flex-direction: row;
     margin-right: 10em;
-    margin-left: 10em;
+    margin-left: 11em;
     justify-content: space-around;
     input{
       border-radius: 40px;
-      height: 5em;
-      width: 30em;
+      height: 2em;
+      width: 15em;
     }
     .search-btn{
-      /*background-color: $green;
-      color: $dark-blue;
-      border-radius: 40px;
-      width: 10em;*/
       background-image: linear-gradient(to right, #2f06f3 0%,  #09b175 51%, #2F06F3  100%);
-      padding: 10px 30px;
+      //padding: 10px 30px;
       margin-left: 10px;
       text-align: center;
-      font-size: 30px;
-      text-transform: uppercase;
+      font-size: 15px;
       transition: 0.5s;
       background-size: 200% auto;
       color: white;
       border-radius: 40px;
       display: block;
-      width: 10em;
-      height:2.8em;
+      width: 7em;
+      height:2.2em;
       &:hover {
         background-position: right center;
         color: #fff;
@@ -56,12 +51,12 @@ h1 {
 }
 li{
   list-style: none;
-  font-size: 2em;
+  font-size: 1em;
 }
 .btn-div {
   display: flex;
   justify-content: center;
-  margin-top: 10em;
+  margin-top: 2em;
 
   .invite-btn {
     /*background-color: $light-blue;
@@ -70,18 +65,16 @@ li{
     width: 15em;
     height:5em;*/
     background-image: linear-gradient(to left, #2F06F3 0%,  #09b175 51%, #2F06F3  100%);
-    margin: 10px;
-    padding: 10px 30px;
+    margin: 2em;
     text-align: center;
     font-size: 30px;
-    text-transform: uppercase;
     transition: 0.5s;
     background-size: 200% auto;
     color: white;
     border-radius: 60px;
     display: block;
-    width: 15em;
-    height:5em;
+    width: 9em;
+    height:1.6em;
     &:hover {
       background-position: right center;
       color: #fff;
