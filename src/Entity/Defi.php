@@ -10,6 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Defi
 {
+    public const FORMAT_AUDIO = 'audio';
+    public const FORMAT_VIDEO = 'video';
+    public const FORMAT_PICTURE = 'picture';
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
