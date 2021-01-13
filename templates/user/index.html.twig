@@ -9,16 +9,18 @@
 
         <div class="my-profile">
             <h1 class="m-0"> Mes défis : </h1>
-            <div class="container-fluid score">
+            <div class="container-fluid score-logos">
                 <div class="logo-banner">
-                    <img class="" src="{{ asset('build/images/banner-star.svg') }}" alt="banner-star"/>
+                    <img class="logo" src="{{ asset('build/images/banner-star.svg') }}" alt="banner-star"/>
                 </div>
-                <h2>Ton score : {{ app.user.score }}points </h2>
 
                 <div class="logo-banner">
-                    <img class="" src="{{ asset('build/images/ranking.svg') }}" alt="banner-star"/>
+                    <img class="logo" src="{{ asset('build/images/ranking.svg') }}" alt="banner-star"/>
                 </div>
-                <h2>Tu es {{ app.user.rate }}ème </h2>
+            </div>
+            <div class="container-fluid score">
+                <h2 class="title-score">Ton score : </br> {{ app.user.score }}points </h2>
+                <h2>Tu es </br> {{ app.user.rate }}ème </h2>
             </div>
             <div>
                 <h3>à relever :</h3>
@@ -40,17 +42,17 @@
                 <h3>accomplis :</h3>
 
                 <ul>
-                {% for creatorChallenge in app.user.creatorChallenges %}
-                    {% if creatorChallenge.isSuccess %}
-                        <li>{{ creatorChallenge.defi.title }}</li>
-                    {% endif %}
-                {% endfor %}
+                    {% for creatorChallenge in app.user.creatorChallenges %}
+                        {% if creatorChallenge.isSuccess %}
+                            <li>{{ creatorChallenge.defi.title }}</li>
+                        {% endif %}
+                    {% endfor %}
 
-                {% for catcherChallenge in app.user.catcherChallenges %}
-                    {% if catcherChallenge.isSuccess %}
-                        <li>{{ catcherChallenge.defi.title }}</li>
-                    {% endif %}
-                {% endfor %}
+                    {% for catcherChallenge in app.user.catcherChallenges %}
+                        {% if catcherChallenge.isSuccess %}
+                            <li>{{ catcherChallenge.defi.title }}</li>
+                        {% endif %}
+                    {% endfor %}
                 </ul>
             </div>
             <a href="#" class="link-new-game"> + </a>

@@ -9,12 +9,12 @@
 
   h2 {
     font-size: 1.4em;
-    margin-top: 25px;
+    margin-bottom: 50px;
   }
 
   h3 {
-    background-image: linear-gradient(to right, #2f06f3 0%,  #09b175 51%, #2F06F3  100%);
-    font-family: $font-title;
+    background-image: linear-gradient(to right, #2f06f3 0%, #09b175 100%);
+    border-radius: 20px;
   }
 
   ul {
@@ -26,18 +26,29 @@
     margin-right : 40px;
   }
 
-  .score {
+  .score-logos {
     display: flex;
-    margin-bottom: 50px;
+    justify-content: space-around;
     margin-top: 20px;
   }
 
-  .logo-banner {
-    background-color: white;
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    margin : auto;
+  .score {
+    display: flex;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .title-score {
+    margin-right: 100px;
+    margin-left: 50px;
+  }
+
+
+  .logo {
+    width: 150px;
+    height: 150px;
+    padding: 10px;
+    margin-left: 0;
   }
 
   img {
@@ -46,9 +57,9 @@
   }
 
   .link-new-game {
-    font-size: 5em;
-    background-image: linear-gradient(to right, #2f06f3 0%,  #09b175 51%, #2F06F3  100%);
-    padding: 5px 15px;
+    font-size: 3em;
+    background-image: linear-gradient(to right, #2f06f3 0%, #09b175 100%);
+    padding: 2px 10px;
     border-radius: 50%;
     color : $white;
   }
