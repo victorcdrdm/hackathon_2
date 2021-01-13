@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Cap{% endblock %}
+
+{% block body %}
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+    <div class="defi-alea d-flex justify-content-center align-items-center">
+        <div>Choisir un défi aléatoirement</div>
+    </div>
+{% endblock %}
