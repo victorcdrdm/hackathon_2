@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Defi;
 use App\Form\DefiType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CapController extends AbstractController
 {
     /**
-     * @Route("/index", name="")
+     * @Route("/index", name="index")
      */
     public function index(): Response
     {
@@ -37,11 +38,17 @@ class CapController extends AbstractController
     }
 
     /**
-     * @Route("/alea", name="_alea")
+     * @Route("/unknown", name="_unknown")
      */
-    public function alea(): Response
+    public function unknown(): Response
     {
-
-        return $this->redirectToRoute('cap_unknown');
+        $defis = $this->getDoctrine()
+            ->getRepository(Defi::class)
+            ->findAll();
+        $aleaNumber = rand(0, count($defis)-1);
+        $defi = $defis[$aleaNumber];
+        return $this->render('cap/unknown.html.twig', [
+            'defi' => $defi,
+        ]);
     }
 }

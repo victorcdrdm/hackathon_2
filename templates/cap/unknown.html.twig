@@ -3,9 +3,23 @@
 {% block title %}New Cap{% endblock %}
 
 {% block body %}
-    <div class="defi-alea d-flex justify-content-center align-items-center">
-        <form action="{{ path('cap_alea') }}">
-            <button>Choisir un défi au hasard</button>
-        </form>
+
+    <div class="defi-alea d-flex flex-column justify-content-center align-items-center">
+        <div class="infos-group text-center">
+            <div class="label">Titre</div>
+            <div class="infos">{{ defi.title }}</div>
+        </div>
+        <div class="infos-group text-center">
+            <div class="label">Description</div>
+            <div class="infos">{{ defi.description }}</div>
+        </div>
+        <div class="infos-group text-center">
+            <div class="label">Document demandé</div>
+            <div class="infos">{{ defi.format }}</div>
+        </div>
+        <div class="infos-group text-center">
+            <div class="label">Points</div>
+            <div class="infos">{{ defi.point }}</div>
+        </div>
     </div>
 {% endblock %}
