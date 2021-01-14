@@ -5,8 +5,8 @@
 {% block body %}
 
     <div class="card-defi margin-top d-flex flex-column justify-content-center align-items-center">
-        <div id="well-done" class=" d-none justify-content-center align-items-center">
-            <img id="well-done-image" class=" d-none well-done-transition" src="{{ asset('build/images/well-done.png') }}" alt="Well done"/>
+        <div id="well-done" class="effcet justify-content-center align-items-center">
+            <img id="well-done-img" src="{{ asset('build/images/well-done.png') }}" alt="Well done"/>
         </div>
         <h2>{{ defi.title }}</h2>
         <h4 class="mt-3">envoyé par : {{ creator.username }}</h4>
@@ -15,7 +15,7 @@
         <div class="cap-todo">
             {{ form_start(form) }}
             {{ form_widget(form) }}
-            <div class="btn-simple" id="todo-button">C'est réussi ?</div>
+            <div class="btn-simple mt-3" id="todo-button">C'est réussi ?</div>
             <button class="btn-simple btn-subimited mt-3 ml-5" type="submit">Valider</button>
             {{ form_end(form) }}
         </div>

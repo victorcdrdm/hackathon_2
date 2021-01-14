@@ -71,7 +71,7 @@ body{
 .main-logo {
   height: 40px;
 }
-
+/*
 #well-done {
   height: 100vh;
   width: 100vw;
@@ -85,6 +85,16 @@ body{
 
 .well-done-transition {
   transition: all 2.5s ease-in-out;
+}
+*/
+
+.effcet{
+  opacity: 0%;
+  position: absolute;
+}
+.d-flex-well{
+  opacity: 100%;
+  transition: ease-in 1200mS;
 }
 
 .btn-subimited{
