@@ -3,18 +3,21 @@
 {% block title %}New Cap{% endblock %}
 
 {% block body %}
-        <div id="well-done" class=" justify-content-center align-items-center">
-            <img id="well-done-image" class=" well-done-transition" src="{{ asset('build/images/well-done.png') }}" alt="Well done"/>
+
+    <div class="card-defi margin-top d-flex flex-column justify-content-center align-items-center">
+        <div id="well-done" class=" d-none justify-content-center align-items-center">
+            <img id="well-done-image" class=" d-none well-done-transition" src="{{ asset('build/images/well-done.png') }}" alt="Well done"/>
         </div>
-        <div class="card-defi margin-top">
-            <h2>{{ defi.title }}</h2>
-            <h4>envoyer par : {{ creator.username }}</h4>
-            <p>{{ defi.description }}</p>
-            <div>nombre de point pour ce défi: <span>{{ defi.point }}</span></div>
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <div class="btn-simple" id="todo-button">C'est réussi ?</div>
-        <button class="btn-simple">submit</button>
-        {{ form_end(form) }}
+        <h2>{{ defi.title }}</h2>
+        <h4 class="mt-3">envoyer par : {{ creator.username }}</h4>
+        <p class="mt-3 ml-5 mr-5">{{ defi.description }}</p>
+        <div class="mt-3 mb-3">nombre de point pour ce défi: <span>{{ defi.point }}</span></div>
+        <div class="cap-todo">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <div class="btn-simple" id="todo-button">C'est réussi ?</div>
+            <button class="btn-simple btn-subimited mt-3 ml-5" type="submit">submit</button>
+            {{ form_end(form) }}
         </div>
+</div>
 {% endblock %}

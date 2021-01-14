@@ -7,6 +7,7 @@ use App\Entity\Defi;
 use App\Entity\User;
 use App\Form\DefiType;
 use App\Form\SucesseType;
+use App\Form\ValidateType;
 use App\Repository\ChallengeRepository;
 use App\Repository\DefiRepository;
 use App\Repository\UserRepository;
@@ -79,13 +80,17 @@ class CapController extends AbstractController
     /**
      * @Route("/{id}", name="challenge", methods={"GET","POST"})
      */
-    public function toDo(Request $request, int $id , ChallengeRepository $challengeRepository, UserRepository $userRepository, DefiRepository $defiRepository): Response
+    public function toDo(Request $request, int $id ,
+                         ChallengeRepository $challengeRepository,
+                         UserRepository $userRepository,
+                         DefiRepository $defiRepository): Response
     {
         $challenge = $challengeRepository->findOneBy(['id'=> $id]);
         $creator = $userRepository->findOneBy(['id' => $challenge->getCreator()]);
         $defi = $defiRepository->findOneBy(['id' => $challenge->getDefi()]);
         $form = $this->createForm(SucesseType::class);
         $form->handleRequest($request);
+
 
         if($form->isSubmitted() && $form->isValid()) {
             $challengeDown = new Challenge();
@@ -102,6 +107,42 @@ class CapController extends AbstractController
             'creator' => $creator,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/cast/{id}", name="cast", methods={"GET"})
+     */
+    public function cast(ChallengeRepository $challengeRepository,int $id): Response
+    {
+        $challenge = $challengeRepository->findOneBy(['id' => $id]);
+
+        return $this->render('cap/cast.html.twig',[
+            'challenge' => $challenge,
+        ]);
+
+    }
+    /**
+     * @Route("/done/{id}", name="done", methods={"GET"})
+     */
+    public function done(ChallengeRepository $challengeRepository,int $id): Response
+    {
+        $challenge = $challengeRepository->findOneBy(['id' => $id]);
+
+        return $this->render('cap/done.html.twig',[
+            'challenge' => $challenge,
+        ]);
+
+    }
+
+    /**
+     * @Route("/validate/{id}", name="validate", methods={"GET","POST"})
+     */
+    public function validate(Request $request, ChallengeRepository $challengeRepository): Response
+    {
+        $form = $this->createForm(ValidateType::class);
+        $form->handleRequest($request);
+
+        return $this->render('cap/validate');
     }
 
     /**
