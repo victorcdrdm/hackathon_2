@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Cap{% endblock %}
+
+{% block body %}
+    <div class="card-defi">
+        <h2>{{ defi.title }}</h2>
+        <h4>envoyer par : {{ creator }}</h4>
+        <p>{{ defi.description }}</p>
+        <div><span>nombre de point pour ce défi: git{{ defi.point }}</span></div>
+    </div>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+    <button>submit</button>
+{% endblock %}
