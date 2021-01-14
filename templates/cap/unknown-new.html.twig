@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Cap{% endblock %}
+
+{% block body %}
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+
+    <div class="d-flex justify-content-center">
+        <button class="btn-simple">Valider</button>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

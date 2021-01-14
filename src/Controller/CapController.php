@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/cap", name="cap")
+ * @Route("/cap", name="cap_")
  */
 class CapController extends AbstractController
 {
@@ -30,21 +30,53 @@ class CapController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/friends", name="_friends")
-     */
-    public function new(Request $request): Response
-    {
-        $form = $this->createForm(DefiType::class);
-        $form->handleRequest($request);
 
-        return $this->render('cap/friends.html.twig', [
+    /**
+     * @Route("/unknown/new", name="unknown_new")
+     */
+    public function unknownNew(Request $request): Response
+    {
+        $unknownUsers = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->findAll();
+        $min = $unknownUsers[0]->getId();
+        $max = $unknownUsers[count($unknownUsers)-1]->getId();
+
+        $rand = $this->getUser()->getId();
+        while($rand === $this->getUser()->getId()) {
+            $rand = rand($min, $max);
+        }
+        $unknownUserId = $rand;
+        $unknownUser = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->find($unknownUserId);
+
+        $challenge = new Challenge();
+        $defi = new Defi();
+        $form = $this->createForm(DefiType::class, $defi);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($defi);
+            $entityManager->flush();
+
+            $challenge->setCreator($this->getUser());
+            $challenge->setCatcher($unknownUser);
+            $challenge->setDefi($defi);
+            $challenge->setIsSuccess('0');
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($challenge);
+            $entityManager->flush();
+            return $this->redirectToRoute('profile');
+        }
+
+
+        return $this->render('cap/unknown-new.html.twig', [
             'form' => $form->createView(),
        ]);
     }
 
     /**
-<<<<<<< HEAD
      * @Route("/{id}", name="challenge", methods={"GET"})
      */
     public function toDo(Request $request, int $id , ChallengeRepository $challengeRepository, UserRepository $userRepository, DefiRepository $defiRepository): Response
@@ -65,12 +97,9 @@ class CapController extends AbstractController
     }
 
     /**
-     * @Route("/alea", name="alea")
-=======
-     * @Route("/unknown", name="_unknown")
->>>>>>> 1fde71fb1bfa3f366549d03937b69829b410cae6
+     * @Route("/unknown/alea", name="_unknown_alea")
      */
-    public function unknown(): Response
+    public function unknownAlea(): Response
     {
         $unknownUsers = $this->getDoctrine()
             ->getRepository(User::class)
@@ -91,15 +120,6 @@ class CapController extends AbstractController
         $defi = $defis[$aleaNumber];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $defi = new Defi();
-            $defi->setDescription($_POST['description']);
-            $defi->setTitle($_POST['title']);
-            $defi->setFormat($_POST['format']);
-            $defi->setPoint($_POST['point']);
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($defi);
-            $entityManager->flush();
-
             $challenge = new Challenge();
             $user = $this->getDoctrine()
                 ->getRepository(User::class)
@@ -110,6 +130,9 @@ class CapController extends AbstractController
             $challenge->setCreator($user);
             $challenge->setCatcher($unknown);
             $challenge->setIsSuccess('0');
+            $defi = $this->getDoctrine()
+                ->getRepository(Defi::class)
+                ->find($_POST['id']);
             $challenge->setDefi($defi);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($challenge);
@@ -118,9 +141,77 @@ class CapController extends AbstractController
 
         }
 
-        return $this->render('cap/unknown.html.twig', [
+        return $this->render('cap/unknown-alea.html.twig', [
             'defi' => $defi,
             'unknown_user_id' => $unknownUserId,
+        ]);
+    }
+
+    /**
+     * @Route("/friend/new/{idFriend}", name="friend_new", methods={"GET"}, requirements={"id":"\d+"})
+     */
+    public function friendNew(Request $request, UserRepository $userRepository, string $idFriend): Response
+    {
+        $friend = $userRepository->findOneBy(['id' => $idFriend]);
+
+
+        $challenge = new Challenge();
+        $defi = new Defi();
+        $form = $this->createForm(DefiType::class, $defi);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($defi);
+            $entityManager->flush();
+
+            $challenge->setCreator($this->getUser());
+            $challenge->setCatcher($friend);
+            $challenge->setDefi($defi);
+            $challenge->setIsSuccess('0');
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($challenge);
+            $entityManager->flush();
+            return $this->redirectToRoute('profile');
+        }
+
+        return $this->render('cap/friend-new.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/friend/alea/{idFriend}", name="friend_alea", methods={"GET", "POST"}, requirements={"id":"\d+"})
+     */
+    public function friendAlea(Request $request, UserRepository $userRepository, string $idFriend): Response
+    {
+        $friend = $userRepository->findOneBy(['id' => $idFriend]);
+
+        $defis = $this->getDoctrine()
+            ->getRepository(Defi::class)
+            ->findAll();
+        $aleaNumber = rand(0, count($defis)-1);
+        $defi = $defis[$aleaNumber];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $challenge = new Challenge();
+            $user = $this->getDoctrine()
+                ->getRepository(User::class)
+                ->find($this->getUser()->getId());
+            $challenge->setCreator($user);
+            $challenge->setCatcher($friend);
+            $challenge->setIsSuccess('0');
+            $defi = $this->getDoctrine()
+                ->getRepository(Defi::class)
+                ->find($_POST['id']);
+            $challenge->setDefi($defi);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($challenge);
+            $entityManager->flush();
+            return $this->redirectToRoute('profile');
+        }
+
+        return $this->render('cap/friend-alea.html.twig', [
+            'defi' => $defi,
         ]);
     }
 }
