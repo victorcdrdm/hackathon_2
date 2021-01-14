@@ -142,7 +142,7 @@ class CapController extends AbstractController
         $form = $this->createForm(ValidateType::class);
         $form->handleRequest($request);
 
-        return $this->render('cap/validate')
+        return $this->render('cap/validate');
     }
 
     /**
