@@ -14,12 +14,12 @@
                 </div>
 
                 <div class="logo-banner">
-                    <img class="logo" src="{{ asset('build/images/ranking.svg') }}" alt="banner-star"/>
+                    <a href="{{ path('ranking') }}"><img class="logo" src="{{ asset('build/images/ranking.svg') }}" alt="banner-star"/></a>
                 </div>
             </div>
             <div class="container-fluid score">
                 <h2 class="title-score">Ton score : </br> {{ app.user.score }}points </h2>
-                <h2>Tu es </br> {{ app.user.rate }}ème </h2>
+                <h2>Classement</h2>
             </div>
             <div>
                 <h3>à relever :</h3>
@@ -47,6 +47,7 @@
                 <h3>accomplis :</h3>
                 <div class="accompli">
                     <div class="creator">
+                        <p>by me</p>
                         <ul>
                             {% for creatorChallenge in app.user.creatorChallenges %}
                                 {% if creatorChallenge.isSuccess %}
@@ -55,7 +56,9 @@
                             {% endfor %}
                         </ul>
                     </div>
+
                     <div class="catcher">
+                        <p>by friends</p>
                         <ul>
                             {% for catcherChallenge in app.user.catcherChallenges %}
                                 {% if catcherChallenge.isSuccess %}
