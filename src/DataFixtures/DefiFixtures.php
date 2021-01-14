@@ -92,6 +92,14 @@ class DefiFixtures extends Fixture
         $manager->persist($defi);
         $this->addReference('defi_' . 9, $defi);
 
+        $defi = new Defi();
+        $defi->setTitle('Hypnotise ton chien');
+        $defi->setDescription("Fais en sorte que ton chien se prenne pour un chat");
+        $defi->setFormat(self::FORMATS[1]);
+        $defi->setPoint(10*rand(1,100));
+        $manager->persist($defi);
+        $this->addReference('defi_' . 10, $defi);
+
         $manager->flush();
     }
 }
