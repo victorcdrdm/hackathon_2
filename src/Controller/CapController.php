@@ -99,6 +99,7 @@ class CapController extends AbstractController
             $challenge->setIsSuccess(true);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush($challenge);
+
             return $this->redirectToRoute('profile');
         }
 
@@ -137,12 +138,34 @@ class CapController extends AbstractController
     /**
      * @Route("/validate/{id}", name="validate", methods={"GET","POST"})
      */
-    public function validate(Request $request, ChallengeRepository $challengeRepository): Response
+    public function validate(int $id, ChallengeRepository $challengeRepository, Request $request): Response
     {
+        $challenge = $challengeRepository->findOneBy(['id'=> $id]);
+
         $form = $this->createForm(ValidateType::class);
         $form->handleRequest($request);
 
-        return $this->render('cap/validate');
+
+        if ($form->isSubmitted() && $form->isValid()){
+
+            $challenge->setIsValid(true);
+            $user = new User();
+            $user = $challenge->getCatcher();
+            $newScore = $user->getScore() + $challenge->getDefi()->getPoint();
+            $user->setScore($newScore);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->flush() ;
+
+
+            return $this->redirectToRoute('profile');
+
+        }
+
+        return $this->render('cap/validate.html.twig',[
+            'form' => $form->createView(),
+            'challenge' => $challenge,
+            ]);
     }
 
     /**

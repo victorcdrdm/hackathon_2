@@ -1,0 +1,25 @@
+
+.btn-coeur {
+  background-image: url("../images/heart-solid.svg");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  background-color: $white;
+  width: 55px;
+  height: 55px;
+  box-shadow: 0px 0px 10px $black;
+  margin-left: 136px;
+}
+.btn-croix {
+  background-image: url("../images/times-solid.svg");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  background-color: $white;
+  width: 55px;
+  height: 55px;
+  box-shadow: 0px 0px 10px $black;
+  margin-left: 30px;
+}
