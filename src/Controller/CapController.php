@@ -6,13 +6,14 @@ use App\Entity\Challenge;
 use App\Entity\Defi;
 use App\Entity\User;
 use App\Form\DefiType;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/cap", name="cap")
+ * @Route("/cap", name="cap_")
  */
 class CapController extends AbstractController
 {
@@ -25,6 +26,7 @@ class CapController extends AbstractController
         return $this->render('cap/index.html.twig', [
         ]);
     }
+
 
     /**
      * @Route("/unknown/new", name="unknown_new")
@@ -64,6 +66,7 @@ class CapController extends AbstractController
             $entityManager->flush();
             return $this->redirectToRoute('profile');
         }
+
 
         return $this->render('cap/unknown-new.html.twig', [
             'form' => $form->createView(),
@@ -122,14 +125,12 @@ class CapController extends AbstractController
     }
 
     /**
-     * @Route("/friend/new", name="friend_new")
+     * @Route("/friend/new/{idFriend}", name="friend_new", methods={"GET"}, requirements={"id":"\d+"})
      */
-    public function friendNew(Request $request): Response
+    public function friendNew(Request $request, UserRepository $userRepository, string $idFriend): Response
     {
-        $friendId = 3;
-        $friend = $this->getDoctrine()
-            ->getRepository(User::class)
-            ->find($friendId);
+        $friend = $userRepository->findOneBy(['id' => $idFriend]);
+
 
         $challenge = new Challenge();
         $defi = new Defi();
@@ -156,14 +157,11 @@ class CapController extends AbstractController
     }
 
     /**
-     * @Route("/friend/alea", name="_friend_alea")
+     * @Route("/friend/alea/{idFriend}", name="friend_alea", methods={"GET", "POST"}, requirements={"id":"\d+"})
      */
-    public function friendAlea(): Response
+    public function friendAlea(Request $request, UserRepository $userRepository, string $idFriend): Response
     {
-        $friendId = 3;
-        $friend = $this->getDoctrine()
-            ->getRepository(User::class)
-            ->find($friendId);
+        $friend = $userRepository->findOneBy(['id' => $idFriend]);
 
         $defis = $this->getDoctrine()
             ->getRepository(Defi::class)
