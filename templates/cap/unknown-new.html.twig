@@ -6,6 +6,9 @@
     {% form_theme form 'bootstrap_4_layout.html.twig' %}
     {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button>Valider</button>
+
+    <div class="d-flex justify-content-center">
+        <button class="btn-simple">Valider</button>
+    </div>
     {{ form_end(form) }}
 {% endblock %}
