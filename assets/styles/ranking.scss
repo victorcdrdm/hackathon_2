@@ -1,0 +1,29 @@
+.ranking {
+
+  h1{
+    width: 75%;
+    font-size: 2.5em;
+    margin: auto;
+  }
+
+  .banner-logo {
+    width: 90%;
+    margin-left: 17px;
+    margin-bottom: -50px;
+  }
+
+  ul {
+    margin-top: 20px;
+  }
+
+  .badge-first{
+    width: 10%;
+    transform: rotate(-30deg) translateY(13px) translateX(-9px);
+    margin-bottom: -30px;
+    position: absolute;
+  }
+
+  .score {
+    color: $green;
+  }
+}
