@@ -21,3 +21,17 @@ require('bootstrap');
 $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
 });
+
+
+//Well Done!
+
+const wellDone = document.getElementById('well-done');
+const button = document.getElementById('todo-button');
+button.addEventListener("click", () => {
+    wellDone.classList.remove('d-none');
+    wellDone.classList.add('d-flex');
+    })
+wellDone.addEventListener("click", () => {
+    wellDone.classList.remove('d-flex');
+    wellDone.classList.add('d-none');
+})
