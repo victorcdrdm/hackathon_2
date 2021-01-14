@@ -15,7 +15,11 @@ class SucesseType extends AbstractType
     {
         $builder
             ->add('url', TextType::class, [
-                'label' => 'URL'
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'url',
+                ],
+
             ] )
 
         ;
