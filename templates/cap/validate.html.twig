@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Cap{% endblock %}
+
+{% block body %}
+    <div class="card-defi margin-top d-flex flex-column justify-content-center align-items-center">
+
+        <h2 class="cap">{{ challenge.defi.title}}</h2>
+        <h4 class="mt-3">Envoyé à : {{ challenge.catcher.username }}</h4>
+        <p class="mt-3 ml-5 mr-5">{{ challenge.defi.description }}</p>
+        <img style="width: 350px" src="{{ challenge.url}}" alt="{{ challenge.url}}">
+        <div class="mt-3 mb-3">Nombre de points pour ce défi: <span>{{ challenge.defi.point }}</span></div>
+
+    </div>
+<div class="cap-todo d-none">
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+</div>
+    <button class="btn-coeur" type="submit"></button>
+    {{ form_end(form) }}
+</div>
+    <a href="{{ path('profile') }}">
+        <button class="btn-croix"></button>
+    </a>
+
+{% endblock %}
