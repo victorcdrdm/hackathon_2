@@ -67,9 +67,10 @@ class ChallengeFixtures extends Fixture implements DependentFixtureInterface
 
         $challenge = new Challenge();
         $challenge->setCatcher($this->getReference('user_' . 46));
-        $challenge->setCreator($this->getReference('user_' . 53));
-        $challenge->setDefi($this->getReference('defi_' . 5));
-        $challenge->setIsSuccess(0);
+        $challenge->setCreator($this->getReference('user_' . 49));
+        $challenge->setDefi($this->getReference('defi_' . 10));
+        $challenge->setUrl('https://nsa40.casimages.com/img/2021/01/14//210114072101102679.jpg' );
+        $challenge->setIsSuccess(1);
         $manager->persist($challenge);
 
 
