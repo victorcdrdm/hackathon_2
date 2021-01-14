@@ -23,16 +23,13 @@
     </div>
     <div class="unknown-validator d-flex justify-content-center align-items-center">
         <div class="m-4">
-            <form action="{{ path('cap_unknown') }}">
+            <form action="{{ path('cap_unknown_alea') }}">
                 <button class="btn-simple">Autre</button>
             </form>
         </div>
         <div class="m-4">
             <form action="" method="post">
-                <input type="hidden" name="title" value="{{ defi.title }}">
-                <input type="hidden" name="description" value="{{ defi.description }}">
-                <input type="hidden" name="format" value="{{ defi.format }}">
-                <input type="hidden" name="point" value="{{ defi.point }}">
+                <input type="hidden" name="id" value="{{ defi.id }}">
                 <input type="hidden" name="catcher" value="{{ unknown_user_id }}">
                 <button class="btn-simple">Nickel</button>
             </form>
