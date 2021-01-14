@@ -16,6 +16,10 @@
   h3 {
     background-image: linear-gradient(to right, #2f06f3 0%, #09b175 100%);
     border-radius: 20px;
+    width: 85%;
+    margin: auto;
+    padding-top: 3px;
+    padding-bottom: 3px;
   }
 
   ul {
@@ -43,7 +47,7 @@
   }
 
   .title-score {
-    margin-right: 100px;
+    margin-right: 70px;
     margin-left: 50px;
   }
 
@@ -61,9 +65,9 @@
   }
 
   .link-new-game {
-    font-size: 3em;
+    font-size: 1.5em;
     background-image: linear-gradient(to right, #2f06f3 0%, #09b175 100%);
-    padding: 2px 10px;
+    padding: 0px 15px;
     border-radius: 50%;
     color : $white;
   }
@@ -73,4 +77,16 @@
   justify-content: space-around;
 }
 
+  .creator {
+    background-color: #2F06F3;
+    border-radius: 25px;
+    margin : 10px;
+    color : $light-blue;
+  }
+  .catcher {
+    background-color: #26866f;
+    border-radius: 25px;
+    margin : 10px;
+    color : $green;
+  }
 }
