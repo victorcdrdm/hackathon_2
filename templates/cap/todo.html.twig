@@ -3,8 +3,8 @@
 {% block title %}New Cap{% endblock %}
 
 {% block body %}
-        <div id="well-done" class="d-none justify-content-center align-items-center">
-            <img src="{{ asset('build/images/well-done.png') }}" alt="Well done"/>
+        <div id="well-done" class=" justify-content-center align-items-center">
+            <img id="well-done-image" class=" well-done-transition" src="{{ asset('build/images/well-done.png') }}" alt="Well done"/>
         </div>
         <div class="card-defi margin-top">
             <h2>{{ defi.title }}</h2>

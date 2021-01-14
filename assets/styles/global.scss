@@ -78,6 +78,10 @@ body{
   top: 50%;
   left:50%;
   transform: translate(-50%, -50%);
-  background-color: #ffffff87;
+  background-color: #ffffff36;
+}
+
+.well-done-transition {
+  transition: all 2.5s ease-in-out;
 }
 
