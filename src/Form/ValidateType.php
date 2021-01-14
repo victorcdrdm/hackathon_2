@@ -3,7 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Challenge;
+use phpDocumentor\Reflection\Types\Boolean;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,7 +15,10 @@ class ValidateType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('isValid')
+            ->add('isValid', CheckboxType::class,
+            [
+                'required' => false,
+            ])
 
         ;
     }
