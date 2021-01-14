@@ -21,3 +21,21 @@ require('bootstrap');
 $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
 });
+
+
+//Well Done!
+
+const wellDone = document.getElementById('well-done');
+const img = document.getElementById('well-done-image')
+const button = document.getElementById('todo-button');
+
+button.addEventListener("click", () => {
+    wellDone.classList.remove('d-none');
+    wellDone.classList.add('d-flex');
+    img.classList.remove('d-none');
+    })
+wellDone.addEventListener("click", () => {
+    wellDone.classList.remove('d-flex');
+    wellDone.classList.add('d-none');
+    img.classList.add('d-none');
+})
