@@ -6,6 +6,7 @@
 {% block body %}
 
     {% if app.user %}
+        <div id="user-score">{{ app.user.score }}</div>
         <div class="my-profile">
             <h1 class="m-0"> Mes défis : </h1>
             <div class="container-fluid score-logos">
@@ -18,8 +19,10 @@
                 </div>
             </div>
             <div class="container-fluid score">
-                <h2 class="title-score">Ton score : </br> {{ app.user.score }}points </h2>
+
+                <h2 class="title-score">Ton score : <p id="countup">0</p></br>  points </h2>
                 <h2>Classement</h2>
+
             </div>
             <div>
                 <h3>à relever :</h3>
@@ -47,7 +50,7 @@
                 <h3>accomplis :</h3>
                 <div class="accompli">
                     <div class="creator">
-                        <p>by me</p>
+                        <p>Moi</p>
                         <ul>
                             {% for creatorChallenge in app.user.creatorChallenges %}
                                 {% if creatorChallenge.isSuccess %}
@@ -58,7 +61,7 @@
                     </div>
 
                     <div class="catcher">
-                        <p>by friends</p>
+                        <p>Mes amis</p>
                         <ul>
                             {% for catcherChallenge in app.user.catcherChallenges %}
                                 {% if catcherChallenge.isSuccess %}

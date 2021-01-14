@@ -2,6 +2,7 @@ body{
   background-color: $dark-blue;
   margin-top: 100px;
   color:white;
+  font-family: 'Cairo', sans-serif;
 }
 
 .logo {
@@ -22,15 +23,10 @@ body{
   margin: 20px 20px 0 0;
   font-size: 25px;
   color: white;
-
   a {
     text-decoration: none;
     color: white;
-
-    &:hover {
-      font-weight: bold;
-      color: white;
-    }
+    font-weight: bold;
   }
 }
 
@@ -46,7 +42,6 @@ body{
   padding-bottom: 10px;
   background-color: $dark-blue;
 }
-
 
 .btn-simple{
   padding: 0.6em 2em;
@@ -83,12 +78,21 @@ body{
   background-color: #ffffff26;
 }
 
-.well-done-transition {
-  transition: all 2.5s ease-in-out;
+.well-done-start {
+  @extend .d-none;
+}
+
+.well-done-end {
+  @extend .d-flex;
 }
 
 .btn-subimited{
   padding-left: 30px;
+  font-weight: bold;
+}
+
+button {
+  font-weight: bold;
 }
 
 
