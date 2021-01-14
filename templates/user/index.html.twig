@@ -50,7 +50,7 @@
                         <ul>
                             {% for creatorChallenge in app.user.creatorChallenges %}
                                 {% if creatorChallenge.isSuccess %}
-                                    <li><a href="{{ path('cap_done', {'id' : creatorChallenge.id}) }}">{{ creatorChallenge.defi.title }}</a></li>
+                                    <li><a href="{{ path('cap_validate', {'id' : creatorChallenge.id}) }}">{{ creatorChallenge.defi.title }}</a></li>
                                 {% endif %}
                             {% endfor %}
                         </ul>
