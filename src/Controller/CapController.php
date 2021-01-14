@@ -145,7 +145,6 @@ class CapController extends AbstractController
         $form = $this->createForm(ValidateType::class);
         $form->handleRequest($request);
 
-
         if ($form->isSubmitted() && $form->isValid()){
 
             $challenge->setIsValid(true);
@@ -166,6 +165,7 @@ class CapController extends AbstractController
             'form' => $form->createView(),
             'challenge' => $challenge,
             ]);
+
     }
 
     /**
