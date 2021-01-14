@@ -44,6 +44,11 @@ class Challenge
      */
     private $url;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isValid;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +110,18 @@ class Challenge
     public function setUrl(?string $url): self
     {
         $this->url = $url;
+
+        return $this;
+    }
+
+    public function getIsValid(): ?bool
+    {
+        return $this->isValid;
+    }
+
+    public function setIsValid(?bool $isValid): self
+    {
+        $this->isValid = $isValid;
 
         return $this;
     }
