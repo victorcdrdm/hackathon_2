@@ -20,25 +20,62 @@ class ChallengeFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        $faker = Faker\Factory::create('fr_FR');
-        for ($i = 0; $i < 12; $i++) {
-            $rand1 = 0;
-            $rand2 = 0;
-            while ($rand1 === $rand2) {
-                $rand1 = rand(46, 49);
-                $rand2 = rand(46, 49);
-            }
-            $challenge = new Challenge();
-            $challenge->setCatcher($this->getReference('user_' . $rand1));
-            $challenge->setCreator($this->getReference('user_' . $rand2));
-            $challenge->setDefi($this->getReference('defi_' . $i));
-            if($i%2 === 0) {
-                $challenge->setUrl($faker->url);
-            }
-            $challenge->setIsSuccess(rand(0, 1));
-            $manager->persist($challenge);
-        }
+        $challenge = new Challenge();
+        $challenge->setCatcher($this->getReference('user_' . 50));
+        $challenge->setCreator($this->getReference('user_' . 46));
+        $challenge->setDefi($this->getReference('defi_' . 1));
+        $challenge->setIsSuccess(0);
+        $manager->persist($challenge);
+
+        $challenge = new Challenge();
+        $challenge->setCatcher($this->getReference('user_' . 48));
+        $challenge->setCreator($this->getReference('user_' . 46));
+        $challenge->setDefi($this->getReference('defi_' . 7));
+        $challenge->setIsSuccess(0);
+        $manager->persist($challenge);
+
+        $challenge = new Challenge();
+        $challenge->setCatcher($this->getReference('user_' . 55));
+        $challenge->setCreator($this->getReference('user_' . 46));
+        $challenge->setDefi($this->getReference('defi_' . 2));
+            $challenge->setUrl('https://2.bp.blogspot.com/_9Z9Hsy423eg/TR0bTVkvT4I/AAAAAAAAAR0/POstZXmBl-E/s1600/IMG_0384.JPG');
+        $challenge->setIsSuccess(1);
+        $manager->persist($challenge);
+
+        $challenge = new Challenge();
+        $challenge->setCatcher($this->getReference('user_' . 57));
+        $challenge->setCreator($this->getReference('user_' . 46));
+        $challenge->setDefi($this->getReference('defi_' . 3));
+        $challenge->setUrl('https://static.hitek.fr/img/up_m/1686087778/hitekz42autraliensdeguisementssortiespoubellesconfinement75.jpg');
+        $challenge->setIsSuccess(1);
+        $manager->persist($challenge);
+
+        $challenge = new Challenge();
+        $challenge->setCatcher($this->getReference('user_' . 51));
+        $challenge->setCreator($this->getReference('user_' . 46));
+        $challenge->setDefi($this->getReference('defi_' . 6));
+        $challenge->setUrl('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/I_woke_up_looking_this_good.jpg/286px-I_woke_up_looking_this_good.jpg');
+        $challenge->setIsSuccess(1);
+        $manager->persist($challenge);
+
+        $challenge = new Challenge();
+        $challenge->setCatcher($this->getReference('user_' . 46));
+        $challenge->setCreator($this->getReference('user_' . 52));
+        $challenge->setDefi($this->getReference('defi_' . 4));
+        $challenge->setIsSuccess(0);
+        $manager->persist($challenge);
+
+        $challenge = new Challenge();
+        $challenge->setCatcher($this->getReference('user_' . 46));
+        $challenge->setCreator($this->getReference('user_' . 53));
+        $challenge->setDefi($this->getReference('defi_' . 5));
+        $challenge->setIsSuccess(0);
+        $manager->persist($challenge);
+
+
+
         $manager->flush();
+
     }
 
     public function getDependencies()
