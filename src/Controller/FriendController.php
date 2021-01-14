@@ -23,7 +23,7 @@ class FriendController extends AbstractController
             $search = $form->getData()['search'];
             $friends = $userRepository->findLikeUsername($search);
         } else {
-            $friends = $userRepository->findAll();
+            $friends = [];
         }
 
         return $this->render('friend/index.html.twig', [
