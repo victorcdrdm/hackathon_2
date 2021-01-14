@@ -26,7 +26,11 @@
                 <h3>à relever :</h3>
                 <ul>
                     {% for catcherChallenge in app.user.catcherChallenges %}
-                        <li>{{ catcherChallenge.defi.title }}</li>
+                        {% if catcherChallenge.isSuccess == false %}
+                            <li>
+                                <a href="{{ path('cap_challenge', {'id' : catcherChallenge.id}) }}">{{ catcherChallenge.defi.title }}</a>
+                            </li>
+                        {% endif %}
                     {% endfor %}
                 </ul>
             </div>
@@ -34,28 +38,36 @@
                 <h3>lancés :</h3>
                 <ul>
                     {% for creatorChallenge in app.user.creatorChallenges %}
-                        <li>{{ creatorChallenge.defi.title }}</li>
+                        {% if creatorChallenge.isSuccess == false %}
+                            <li><a href="">{{ creatorChallenge.defi.title }}</a></li>
+                        {% endif %}
                     {% endfor %}
                 </ul>
             </div>
             <div>
                 <h3>accomplis :</h3>
-
-                <ul>
-                    {% for creatorChallenge in app.user.creatorChallenges %}
-                        {% if creatorChallenge.isSuccess %}
-                            <li>{{ creatorChallenge.defi.title }}</li>
-                        {% endif %}
-                    {% endfor %}
-
-                    {% for catcherChallenge in app.user.catcherChallenges %}
-                        {% if catcherChallenge.isSuccess %}
-                            <li>{{ catcherChallenge.defi.title }}</li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
+                <div class="accompli">
+                    <div class="creator">
+                        <ul>
+                            {% for creatorChallenge in app.user.creatorChallenges %}
+                                {% if creatorChallenge.isSuccess %}
+                                    <li>{{ creatorChallenge.defi.title }}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="catcher">
+                        <ul>
+                            {% for catcherChallenge in app.user.catcherChallenges %}
+                                {% if catcherChallenge.isSuccess %}
+                                    <li>{{ catcherChallenge.defi.title }}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <a href="#" class="link-new-game"> + </a>
+            <a href="{{ path('cap__index') }}" class="link-new-game"> + </a>
         </div>
     {% else %}
         <p> Il faut d'abord se connecter</p>

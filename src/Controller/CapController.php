@@ -21,7 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CapController extends AbstractController
 {
     /**
-     * @Route("/index", name="index")
+     * @Route("/index", name="_index")
      */
     public function index(): Response
     {
