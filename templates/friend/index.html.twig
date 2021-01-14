@@ -15,11 +15,8 @@
     <div class="list">
         {% for friend in friends %}
             <ul>
-            <li>{{ friend.username }}</li>
+            <li><a href="">{{ friend.username }}</a></li>
             </ul>
         {% endfor %}
-    </div>
-    <div class="btn-div">
-        <button class="invite-btn">Inviter un inconnu</button>
     </div>
 {% endblock %}
