@@ -27,14 +27,45 @@ class CapController extends AbstractController
     }
 
     /**
-     * @Route("/friends", name="_friends")
+     * @Route("/unknown/new", name="unknown_new")
      */
     public function new(Request $request): Response
     {
-        $form = $this->createForm(DefiType::class);
-        $form->handleRequest($request);
+        $unknownUsers = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->findAll();
+        $min = $unknownUsers[0]->getId();
+        $max = $unknownUsers[count($unknownUsers)-1]->getId();
 
-        return $this->render('cap/friends.html.twig', [
+        $rand = $this->getUser()->getId();
+        while($rand === $this->getUser()->getId()) {
+            $rand = rand($min, $max);
+        }
+        $unknownUserId = $rand;
+        $unknownUser = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->find($unknownUserId);
+
+        $challenge = new Challenge();
+        $defi = new Defi();
+        $form = $this->createForm(DefiType::class, $defi);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($defi);
+            $entityManager->flush();
+
+            $challenge->setCreator($this->getUser());
+            $challenge->setCatcher($unknownUser);
+            $challenge->setDefi($defi);
+            $challenge->setIsSuccess('0');
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($challenge);
+            $entityManager->flush();
+            return $this->redirectToRoute('profile');
+        }
+
+        return $this->render('cap/unknown-new.html.twig', [
             'form' => $form->createView(),
        ]);
     }
@@ -84,7 +115,7 @@ class CapController extends AbstractController
 
         }
 
-        return $this->render('cap/unknown.html.twig', [
+        return $this->render('cap/unknown-alea.html.twig', [
             'defi' => $defi,
             'unknown_user_id' => $unknownUserId,
         ]);
