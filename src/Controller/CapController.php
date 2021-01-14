@@ -125,7 +125,7 @@ class CapController extends AbstractController
     }
 
     /**
-     * @Route("/friend/new/{idFriend}", name="friend_new", methods={"GET"}, requirements={"id":"\d+"})
+     * @Route("/friend/new/{idFriend}", name="friend_new", methods={"GET", "POST"}, requirements={"id":"\d+"})
      */
     public function friendNew(Request $request, UserRepository $userRepository, string $idFriend): Response
     {
@@ -161,6 +161,7 @@ class CapController extends AbstractController
      */
     public function friendAlea(Request $request, UserRepository $userRepository, string $idFriend): Response
     {
+
         $friend = $userRepository->findOneBy(['id' => $idFriend]);
 
         $defis = $this->getDoctrine()
@@ -189,6 +190,7 @@ class CapController extends AbstractController
 
         return $this->render('cap/friend-alea.html.twig', [
             'defi' => $defi,
+            'friend' => $friend,
         ]);
     }
 }
