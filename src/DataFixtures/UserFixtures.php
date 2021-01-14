@@ -24,7 +24,7 @@ class UserFixtures extends Fixture
         $claire = new User();
         $claire->setUsername('claire');
         $claire->setRoles(['ROLE_USER']);
-        $claire->setScore(0);
+        $claire->setScore(230);
         $claire->setPassword($this->passwordEncoder->encodePassword(
             $claire,
             'claire'
@@ -36,7 +36,7 @@ class UserFixtures extends Fixture
         $aude = new User();
         $aude->setUsername('aude');
         $aude->setRoles(['ROLE_USER']);
-        $aude->setScore(0);
+        $aude->setScore(320);
         $aude->setPassword($this->passwordEncoder->encodePassword(
             $aude,
             'aude'
@@ -48,7 +48,7 @@ class UserFixtures extends Fixture
         $benji = new User();
         $benji->setUsername('benjamin');
         $benji->setRoles(['ROLE_USER']);
-        $benji->setScore(0);
+        $benji->setScore(180);
         $benji->setPassword($this->passwordEncoder->encodePassword(
             $benji,
             'benjamin'
@@ -61,7 +61,7 @@ class UserFixtures extends Fixture
         $victor = new User();
         $victor->setUsername('victor');
         $victor->setRoles(['ROLE_USER']);
-        $victor->setScore(0);
+        $victor->setScore(710);
         $victor->setPassword($this->passwordEncoder->encodePassword(
             $victor,
             'victor'
@@ -70,7 +70,106 @@ class UserFixtures extends Fixture
         $manager->persist($victor);
         $this->addReference('user_49', $victor);
 
-        // Sauvegarde des 2 nouveaux utilisateurs :
+        $maite = new User();
+        $maite->setUsername('MaiteQueCBon');
+        $maite->setRoles(['ROLE_USER']);
+        $maite->setScore(220);
+        $maite->setPassword($this->passwordEncoder->encodePassword(
+            $maite,
+            'maite'
+        ));
+
+        $manager->persist($maite);
+        $this->addReference('user_50', $maite);
+
+        $serge = new User();
+        $serge->setUsername('SergeDu38');
+        $serge->setRoles(['ROLE_USER']);
+        $serge->setScore(260);
+        $serge->setPassword($this->passwordEncoder->encodePassword(
+            $serge,
+            'serge'
+        ));
+
+        $manager->persist($serge);
+        $this->addReference('user_51', $serge);
+
+
+        $jm = new User();
+        $jm->setUsername('JeanMichMich');
+        $jm->setRoles(['ROLE_USER']);
+        $jm->setScore(2260);
+        $jm->setPassword($this->passwordEncoder->encodePassword(
+            $jm,
+            'jm'
+        ));
+
+        $manager->persist($jm);
+        $this->addReference('user_52', $jm);
+
+        $dsk = new User();
+        $dsk->setUsername('DSK');
+        $dsk->setRoles(['ROLE_USER']);
+        $dsk->setScore(1260);
+        $dsk->setPassword($this->passwordEncoder->encodePassword(
+            $dsk,
+            'dsk'
+        ));
+
+        $manager->persist($dsk);
+        $this->addReference('user_53', $dsk);
+
+        $martine = new User();
+        $martine->setUsername('MartineALaWild');
+        $martine->setRoles(['ROLE_USER']);
+        $martine->setScore(460);
+        $martine->setPassword($this->passwordEncoder->encodePassword(
+            $martine,
+            'dsk'
+        ));
+
+        $manager->persist($martine);
+        $this->addReference('user_54', $martine);
+
+        $pascal = new User();
+        $pascal->setUsername('Pascal_Obispo');
+        $pascal->setRoles(['ROLE_USER']);
+        $pascal->setScore(820);
+        $pascal->setPassword($this->passwordEncoder->encodePassword(
+            $pascal,
+            'pascal'
+        ));
+
+        $manager->persist($martine);
+        $this->addReference('user_55', $martine);
+
+        $pascal = new User();
+        $pascal->setUsername('Pascal_Obispo');
+        $pascal->setRoles(['ROLE_USER']);
+        $pascal->setScore(820);
+        $pascal->setPassword($this->passwordEncoder->encodePassword(
+            $pascal,
+            'pascal'
+        ));
+
+        $manager->persist($pascal);
+        $this->addReference('user_56', $pascal);
+
+        $francis = new User();
+        $francis->setUsername('Francis-Cabrel');
+        $francis->setRoles(['ROLE_USER']);
+        $francis->setScore(3320);
+        $francis->setPassword($this->passwordEncoder->encodePassword(
+            $francis,
+            'francis'
+        ));
+
+        $manager->persist($francis);
+        $this->addReference('user_57', $francis);
+
+
+
+
         $manager->flush();
     }
 }
