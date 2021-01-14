@@ -4,11 +4,11 @@
 
 {% block body %}
     {% form_theme form 'bootstrap_4_layout.html.twig' %}
+    <h2 class="cap d-flex justify-content-center">Crée ton défi !</h2>
     {{ form_start(form) }}
     {{ form_widget(form) }}
-
     <div class="d-flex justify-content-center">
-        <button class="btn-simple">Valider</button>
+        <button class="btn-simple mt-4 mb-4">Valider</button>
     </div>
     {{ form_end(form) }}
 {% endblock %}

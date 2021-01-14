@@ -19,4 +19,15 @@ class UserController extends AbstractController
             'controller_name' => 'UserController',
         ]);
     }
+
+    /**
+     * @Route("/ranking", name="ranking")
+     */
+    public function ranking(UserRepository $userRepository): Response
+    {
+        $users = $userRepository->findAllOrderByScore();
+        return $this->render('user/ranking.html.twig', [
+            'users' => $users,
+        ]);
+    }
 }
