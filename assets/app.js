@@ -20,6 +20,30 @@ require('bootstrap');
 
 $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
+    const wellDone = document.getElementById('well-done');
+    const img = document.getElementById('well-done-image')
+    const button = document.getElementById('todo-button');
+
+    button.addEventListener("click", () => {
+        wellDone.classList.add('d-flex-well');
+    })
+    wellDone.addEventListener("click", () => {
+        wellDone.classList.remove('d-flex-well');
+    })
+
+    let userScore = document.getElementById('user-score');
+    let score     = userScore.innerHTML;
+
+    const options = {
+        separator: ' ',
+    };
+    let demo = new CountUp('countup', score, options);
+    if (!demo.error) {
+        demo.start();
+    } else {
+        console.error(demo.error);
+    }
+
 });
 
 
@@ -29,34 +53,9 @@ $(document).ready(function() {
 
 //Count up
 
-let userScore = document.getElementById('user-score');
-let score     = userScore.innerHTML;
 
-const options = {
-    separator: ' ',
-};
-let demo = new CountUp('countup', score, options);
-if (!demo.error) {
-    demo.start();
-} else {
-    console.error(demo.error);
-}
 
 //Well Done!
 
-const wellDone = document.getElementById('well-done');
-const img = document.getElementById('well-done-image')
-const button = document.getElementById('todo-button');
 
-button.addEventListener("click", () => {
-    wellDone.classList.remove('d-none');
-    wellDone.classList.add('d-flex');
-    img.classList.remove('well-done-start');
-    img.classList.add('well-done-end');
-    })
-wellDone.addEventListener("click", () => {
-    wellDone.classList.remove('d-flex');
-    wellDone.classList.add('d-none');
-    img.classList.remove('well-done-end');
-    img.classList.add('well-done-start');
-})
+
