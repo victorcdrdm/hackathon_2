@@ -27,7 +27,9 @@
                 <ul>
                     {% for catcherChallenge in app.user.catcherChallenges %}
                         {% if catcherChallenge.isSuccess == false %}
-                            <li><a href="{{ path('capchallenge', {'id' : catcherChallenge.id}) }}">{{ catcherChallenge.defi.title }}</a></li>
+                            <li>
+                                <a href="{{ path('cap_challenge', {'id' : catcherChallenge.id}) }}">{{ catcherChallenge.defi.title }}</a>
+                            </li>
                         {% endif %}
                     {% endfor %}
                 </ul>
@@ -37,14 +39,13 @@
                 <ul>
                     {% for creatorChallenge in app.user.creatorChallenges %}
                         {% if creatorChallenge.isSuccess == false %}
-                        <li><a href="{{ path('capchallenge', {'id' : creatorChallenge.id}) }}">{{ creatorChallenge.defi.title }}</a></li>
+                            <li><a href="">{{ creatorChallenge.defi.title }}</a></li>
                         {% endif %}
                     {% endfor %}
                 </ul>
             </div>
             <div>
                 <h3>accomplis :</h3>
-
                 <ul>
                     {% for creatorChallenge in app.user.creatorChallenges %}
                         {% if creatorChallenge.isSuccess %}
@@ -59,7 +60,7 @@
                     {% endfor %}
                 </ul>
             </div>
-            <a href="{{ path('cap_index') }}" class="link-new-game"> + </a>
+            <a href="{{ path('cap__index') }}" class="link-new-game"> + </a>
         </div>
     {% else %}
         <p> Il faut d'abord se connecter</p>
