@@ -6,6 +6,7 @@ use App\Entity\Challenge;
 use App\Entity\Defi;
 use App\Entity\User;
 use App\Form\DefiType;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,15 +28,17 @@ class CapController extends AbstractController
     }
 
     /**
-     * @Route("/friends", name="_friends")
+     * @Route("/new/{idFriend}", name="_new", methods={"GET"}, requirements={"id":"\d+"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, string $idFriend, UserRepository $userRepository): Response
     {
+        $friend = $userRepository->findOneBy(['id' => $idFriend]);
         $form = $this->createForm(DefiType::class);
         $form->handleRequest($request);
 
-        return $this->render('cap/friends.html.twig', [
+        return $this->render('cap/new.html.twig', [
             'form' => $form->createView(),
+            'friend' => $friend,
        ]);
     }
 

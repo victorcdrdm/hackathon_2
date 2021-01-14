@@ -3,16 +3,16 @@
 {% block title %}Start{% endblock %}
 
 {% block body %}
-    <div class="margin-top">
+    <h1>Choisis ton défi avec {{ friend.username }}</h1>
+    <div class="">
         <div class="btn-margin">
             <div class="btn-home mt-5 mb-5">
-                <a href="{{ path('friend') }}">Défier un ami</a>
+                <a href="{{ path('cap_new', {'idFriend': friend.id}) }}">Créer un défi</a>
             </div>
         </div>
         <div class="btn-margin">
             <div class="btn-home mt-5">
-                <a href="{{ path('cap_unknown') }}">Défier un inconnu</a>
-                <p class="font-italic">Encore mieux que Tinder</p>
+                <a href="{{ path('cap_unknown') }}">Défi aléatoire</a>
             </div>
         </div>
     </div>
