@@ -9,20 +9,15 @@
         <div id="user-score">{{ app.user.score }}</div>
         <div class="my-profile">
             <h1 class="m-0"> Mes défis : </h1>
-            <div class="container-fluid score-logos">
-                <div class="logo-banner">
-                    <img class="logo" src="{{ asset('build/images/banner-star.svg') }}" alt="banner-star"/>
+            <div class="d-flex score-logos">
+                <div class="flex-column justify-content-center logo-banner">
+                    <img class="mb-4 mt-5 logo" src="{{ asset('build/images/banner-star.svg') }}" alt="banner-star"/>
+                    <h2><span class="green">Ton score</span><p id="countup">0</p></h2>
                 </div>
-
-                <div class="logo-banner">
-                    <a href="{{ path('ranking') }}"><img class="logo" src="{{ asset('build/images/ranking.svg') }}" alt="banner-star"/></a>
+                <div class="flex-column justify-content-center logo-banner">
+                    <a href="{{ path('ranking') }}"><img class="mb-4 mt-5 logo" src="{{ asset('build/images/ranking.svg') }}" alt="banner-star"/></a>
+                    <h2 class="green">Classement</h2>
                 </div>
-            </div>
-            <div class="container-fluid score">
-
-                <h2 class="title-score">Ton score : <p id="countup">0</p></br>  points </h2>
-                <h2>Classement</h2>
-
             </div>
             <div>
                 <h3>à relever :</h3>
@@ -72,8 +67,11 @@
                     </div>
                 </div>
             </div>
-            <a href="{{ path('cap_index') }}" class="link-new-game"> + </a>
-        </div>
+            <div class="d-flex justify-content-center">
+                <div class="link-new-game d-flex justify-content-center align-items-center">
+                    <a href="{{ path('cap_index') }}"> + </a>
+                </div>
+            </div>
     {% else %}
         <p> Il faut d'abord se connecter</p>
         <a href="{{ path('app_login') }}">Se connecter</a>

@@ -22,6 +22,11 @@ $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
 });
 
+
+
+
+
+
 //Count up
 
 let userScore = document.getElementById('user-score');
