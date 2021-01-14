@@ -40,7 +40,7 @@ class CapController extends AbstractController
     }
 
     /**
-     * @Route("/unknown", name="_unknown")
+     * @Route("/unknown/alea", name="_unknown_alea")
      */
     public function unknown(): Response
     {
@@ -63,15 +63,6 @@ class CapController extends AbstractController
         $defi = $defis[$aleaNumber];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $defi = new Defi();
-            $defi->setDescription($_POST['description']);
-            $defi->setTitle($_POST['title']);
-            $defi->setFormat($_POST['format']);
-            $defi->setPoint($_POST['point']);
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($defi);
-            $entityManager->flush();
-
             $challenge = new Challenge();
             $user = $this->getDoctrine()
                 ->getRepository(User::class)
@@ -82,6 +73,9 @@ class CapController extends AbstractController
             $challenge->setCreator($user);
             $challenge->setCatcher($unknown);
             $challenge->setIsSuccess('0');
+            $defi = $this->getDoctrine()
+                ->getRepository(Defi::class)
+                ->find($_POST['id']);
             $challenge->setDefi($defi);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($challenge);
