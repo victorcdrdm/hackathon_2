@@ -15,7 +15,7 @@
     <div class="list">
         {% for friend in friends %}
             <ul>
-            <li><a href="">{{ friend.username }}</a></li>
+            <li><a href="{{ path('choose_challenge', {'id': friend.id}) }}">{{ friend.username }}</a></li>
             </ul>
         {% endfor %}
     </div>
