@@ -1,0 +1,40 @@
+.username{
+  margin-bottom: 2em;
+  label{
+    margin-left: 3.5em;
+  }
+  input{
+    width: 70%;
+    margin-left: 3.5em;
+  }
+}
+.password{
+  margin-bottom: 6em;
+  label{
+    margin-left: 3.5em;
+  }
+  input{
+    width: 70%;
+    margin-left: 3.5em;
+  }
+}
+.btn-login {
+  background-image: linear-gradient(to left, #2F06F3 0%,  #09b175 51%, #2F06F3  100%);
+  margin: 2em;
+  text-align: center;
+  font-size: 30px;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 60px;
+  display: block;
+  width: 9em;
+  height:1.6em;
+  &:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+
