@@ -21,7 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CapController extends AbstractController
 {
     /**
-     * @Route("/index", name="_index")
+     * @Route("/index", name="index")
      */
     public function index(): Response
     {
@@ -105,7 +105,7 @@ class CapController extends AbstractController
     }
 
     /**
-     * @Route("/unknown/alea", name="_unknown_alea")
+     * @Route("/unknown/alea", name="unknown_alea")
      */
     public function unknownAlea(): Response
     {

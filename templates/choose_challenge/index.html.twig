@@ -7,12 +7,20 @@
     <div class="">
         <div class="btn-margin">
             <div class="btn-home mt-5 mb-5">
-                <a href="{{ path('cap_friend_new', {'idFriend': friend.id}) }}">Créer un défi</a>
+                {% if friend.id == app.user.id %}
+                    <a href="{{ path('cap_unknown_new')}}">Créer un défi</a>
+                {% else %}
+                    <a href="{{ path('cap_friend_new', {'idFriend': friend.id}) }}">Créer un défi</a>
+                {% endif %}
             </div>
         </div>
         <div class="btn-margin">
             <div class="btn-home mt-5">
-                <a href="{{ path('cap_friend_alea', {'idFriend': friend.id}) }}">Défi aléatoire</a>
+                {% if friend.id == app.user.id %}
+                    <a href="{{ path('cap_unknown_alea') }}">Défi aléatoire</a>
+                {% else %}
+                    <a href="{{ path('cap_friend_alea', {'idFriend': friend.id}) }}">Défi aléatoire</a>
+                {% endif %}
             </div>
         </div>
     </div>
