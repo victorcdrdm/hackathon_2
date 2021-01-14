@@ -6,6 +6,9 @@ use App\Entity\Challenge;
 use App\Entity\Defi;
 use App\Entity\User;
 use App\Form\DefiType;
+use App\Form\SucesseType;
+use App\Repository\ChallengeRepository;
+use App\Repository\DefiRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,7 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CapController extends AbstractController
 {
     /**
-     * @Route("/index", name="index")
+     * @Route("/index", name="_index")
      */
     public function index(): Response
     {
@@ -71,6 +74,34 @@ class CapController extends AbstractController
         return $this->render('cap/unknown-new.html.twig', [
             'form' => $form->createView(),
        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="challenge", methods={"GET","POST"})
+     */
+    public function toDo(Request $request, int $id , ChallengeRepository $challengeRepository, UserRepository $userRepository, DefiRepository $defiRepository): Response
+    {
+        $challenge = $challengeRepository->findOneBy(['id'=> $id]);
+        $creator = $userRepository->findOneBy(['id' => $challenge->getCreator()]);
+        $defi = $defiRepository->findOneBy(['id' => $challenge->getDefi()]);
+        $form = $this->createForm(SucesseType::class);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $challengeDown = new Challenge();
+            $challengeDown = $form->getData();
+            $challenge->setUrl($challengeDown->getUrl());
+            $challenge->setIsSuccess(true);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->flush($challenge);
+            return $this->redirectToRoute('profile');
+        }
+
+        return $this->render('cap/todo.html.twig', [
+            'defi' => $defi,
+            'creator' => $creator,
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
