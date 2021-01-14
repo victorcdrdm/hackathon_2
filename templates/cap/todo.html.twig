@@ -3,14 +3,15 @@
 {% block title %}New Cap{% endblock %}
 
 {% block body %}
-    <div class="card-defi">
+    <div class="card-defi margin-top">
         <h2>{{ defi.title }}</h2>
-        <h4>envoyer par : {{ creator }}</h4>
+        <h4>envoyer par : {{ creator.username }}</h4>
         <p>{{ defi.description }}</p>
-        <div><span>nombre de point pour ce défi: git{{ defi.point }}</span></div>
-    </div>
+        <div>nombre de point pour ce défi: <span>{{ defi.point }}</span></div>
+
     {{ form_start(form) }}
     {{ form_widget(form) }}
+    <button class="btn-simple">submit</button>
     {{ form_end(form) }}
-    <button>submit</button>
+</div>
 {% endblock %}

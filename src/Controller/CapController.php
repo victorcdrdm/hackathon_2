@@ -44,18 +44,25 @@ class CapController extends AbstractController
     }
 
     /**
-<<<<<<< HEAD
-     * @Route("/{id}", name="challenge", methods={"GET"})
+     * @Route("/{id}", name="challenge", methods={"GET","POST"})
      */
     public function toDo(Request $request, int $id , ChallengeRepository $challengeRepository, UserRepository $userRepository, DefiRepository $defiRepository): Response
     {
         $challenge = $challengeRepository->findOneBy(['id'=> $id]);
         $creator = $userRepository->findOneBy(['id' => $challenge->getCreator()]);
         $defi = $defiRepository->findOneBy(['id' => $challenge->getDefi()]);
-        $creator= $creator->getUsername();
-
         $form = $this->createForm(SucesseType::class);
         $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $challengeDown = new Challenge();
+            $challengeDown = $form->getData();
+            $challenge->setUrl($challengeDown->getUrl());
+            $challenge->setIsSuccess(true);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->flush($challenge);
+            return $this->redirectToRoute('profile');
+        }
 
         return $this->render('cap/todo.html.twig', [
             'defi' => $defi,
@@ -65,10 +72,7 @@ class CapController extends AbstractController
     }
 
     /**
-     * @Route("/alea", name="alea")
-=======
      * @Route("/unknown", name="_unknown")
->>>>>>> 1fde71fb1bfa3f366549d03937b69829b410cae6
      */
     public function unknown(): Response
     {

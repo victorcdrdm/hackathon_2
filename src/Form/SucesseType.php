@@ -15,7 +15,7 @@ class SucesseType extends AbstractType
     {
         $builder
             ->add('url', TextType::class, [
-                'label' => 'Pose ta solution via un URL'
+                'label' => 'URL'
             ] )
 
         ;
