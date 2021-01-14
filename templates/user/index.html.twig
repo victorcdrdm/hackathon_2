@@ -6,6 +6,7 @@
 {% block body %}
 
     {% if app.user %}
+        <div id="user-score">{{ app.user.score }}</div>
         <div class="my-profile">
             <h1 class="m-0"> Mes défis : </h1>
             <div class="container-fluid score-logos">
@@ -18,7 +19,7 @@
                 </div>
             </div>
             <div class="container-fluid score">
-                <h2 class="title-score">Ton score : </br> {{ app.user.score }}points </h2>
+                <h2 class="title-score">Ton score : <p id="countup">0</p></br>  points </h2>
                 <h2>Tu es </br> {{ app.user.rate }}ème </h2>
             </div>
             <div>

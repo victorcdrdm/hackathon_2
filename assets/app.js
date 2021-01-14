@@ -9,7 +9,7 @@
 import './styles/app.scss';
 
 // start the Stimulus application
-
+import { CountUp } from 'countup.js';
 const $ = require('jquery');
 // this "modifies" the jquery module: adding behavior to it
 // the bootstrap module doesn't export/return anything
@@ -22,6 +22,20 @@ $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
 });
 
+//Count up
+
+let userScore = document.getElementById('user-score');
+let score     = userScore.innerHTML;
+
+const options = {
+    separator: ' ',
+};
+let demo = new CountUp('countup', score, options);
+if (!demo.error) {
+    demo.start();
+} else {
+    console.error(demo.error);
+}
 
 //Well Done!
 
@@ -32,10 +46,12 @@ const button = document.getElementById('todo-button');
 button.addEventListener("click", () => {
     wellDone.classList.remove('d-none');
     wellDone.classList.add('d-flex');
-    img.classList.remove('d-none');
+    img.classList.remove('well-done-start');
+    img.classList.add('well-done-end');
     })
 wellDone.addEventListener("click", () => {
     wellDone.classList.remove('d-flex');
     wellDone.classList.add('d-none');
-    img.classList.add('d-none');
+    img.classList.remove('well-done-end');
+    img.classList.add('well-done-start');
 })

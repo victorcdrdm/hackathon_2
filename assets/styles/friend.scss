@@ -1,5 +1,5 @@
 h1 {
-  font-family: Chilanka;
+  font-family: 'Lobster', cursive;
   font-weight: bold;
   color: $light-blue;
   text-align: center;
@@ -28,7 +28,7 @@ h1 {
   @extend .btn-simple;
   width: 7em;
   height:2.2em;
-  padding: 0;
+  padding: 0 10px;
 }
 
 .list {
