@@ -45,7 +45,7 @@
                 <h3>accomplis :</h3>
                 <div class="accompli">
                     <div class="creator">
-                        <p>Moi</p>
+                        <p>Mes amis</p>
                         <ul>
                             {% for creatorChallenge in app.user.creatorChallenges %}
                                 {% if creatorChallenge.isSuccess %}
@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="catcher">
-                        <p>Mes amis</p>
+                        <p>Moi</p>
                         <ul>
                             {% for catcherChallenge in app.user.catcherChallenges %}
                                 {% if catcherChallenge.isSuccess %}
