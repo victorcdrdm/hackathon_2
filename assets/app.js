@@ -21,6 +21,7 @@ require('bootstrap');
 $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
 
+    //Well Done!
     const wellDone = document.getElementById('well-done');
     const img = document.getElementById('well-done-image');
     const button = document.getElementById('todo-button');
@@ -51,7 +52,6 @@ if (!demo.error) {
 
 
 
-//Well Done!
 
 
 
