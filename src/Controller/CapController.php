@@ -74,6 +74,7 @@ class CapController extends AbstractController
 
         return $this->render('cap/unknown-new.html.twig', [
             'form' => $form->createView(),
+            'unknown_user' => $unknownUser,
        ]);
     }
 

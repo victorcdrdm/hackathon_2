@@ -3,7 +3,10 @@
 {% block title %}Start{% endblock %}
 
 {% block body %}
-    <h1>Choisis ton défi avec {{ friend.username }}</h1>
+    <h1>Choisis ton défi
+        {% if friend.username != app.user.username %}
+            pour {{ friend.username }}</h1>
+        {% endif %}
     <div class="">
         <div class="btn-margin">
             <div class="btn-home mt-5 mb-5">
