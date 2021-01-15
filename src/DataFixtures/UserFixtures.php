@@ -24,7 +24,7 @@ class UserFixtures extends Fixture
         $claire = new User();
         $claire->setUsername('claire');
         $claire->setRoles(['ROLE_USER']);
-        $claire->setScore(230);
+        $claire->setScore(3230);
         $claire->setPassword($this->passwordEncoder->encodePassword(
             $claire,
             'claire'
@@ -61,7 +61,7 @@ class UserFixtures extends Fixture
         $victor = new User();
         $victor->setUsername('victor');
         $victor->setRoles(['ROLE_USER']);
-        $victor->setScore(710);
+        $victor->setScore(7010);
         $victor->setPassword($this->passwordEncoder->encodePassword(
             $victor,
             'victor'
@@ -71,7 +71,7 @@ class UserFixtures extends Fixture
         $this->addReference('user_49', $victor);
 
         $maite = new User();
-        $maite->setUsername('MaiteQueCBon');
+        $maite->setUsername('MaïtéQueCBon');
         $maite->setRoles(['ROLE_USER']);
         $maite->setScore(220);
         $maite->setPassword($this->passwordEncoder->encodePassword(
@@ -110,7 +110,7 @@ class UserFixtures extends Fixture
         $dsk = new User();
         $dsk->setUsername('DSK');
         $dsk->setRoles(['ROLE_USER']);
-        $dsk->setScore(1260);
+        $dsk->setScore(12060);
         $dsk->setPassword($this->passwordEncoder->encodePassword(
             $dsk,
             'dsk'
@@ -134,7 +134,7 @@ class UserFixtures extends Fixture
         $pascal = new User();
         $pascal->setUsername('Pascal_Obispo');
         $pascal->setRoles(['ROLE_USER']);
-        $pascal->setScore(820);
+        $pascal->setScore(1820);
         $pascal->setPassword($this->passwordEncoder->encodePassword(
             $pascal,
             'pascal'
@@ -146,7 +146,7 @@ class UserFixtures extends Fixture
         $pascal = new User();
         $pascal->setUsername('Pascal_Obispo');
         $pascal->setRoles(['ROLE_USER']);
-        $pascal->setScore(820);
+        $pascal->setScore(8420);
         $pascal->setPassword($this->passwordEncoder->encodePassword(
             $pascal,
             'pascal'

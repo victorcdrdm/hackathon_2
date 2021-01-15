@@ -20,6 +20,7 @@ require('bootstrap');
 
 $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
+    //Well Done!
     const wellDone = document.getElementById('well-done');
     const img = document.getElementById('well-done-image')
     const button = document.getElementById('todo-button');
@@ -30,32 +31,23 @@ $(document).ready(function() {
     wellDone.addEventListener("click", () => {
         wellDone.classList.remove('d-flex-well');
     })
-
-    let userScore = document.getElementById('user-score');
-    let score     = userScore.innerHTML;
-
-    const options = {
-        separator: ' ',
-    };
-    let demo = new CountUp('countup', score, options);
-    if (!demo.error) {
-        demo.start();
-    } else {
-        console.error(demo.error);
-    }
-
 });
 
 
-
-
-
-
 //Count up
+let userScore = document.getElementById('user-score');
+let score     = userScore.innerHTML;
 
+const options = {
+    separator: '  ',
+};
+let demo = new CountUp('countup', score, options);
+if (!demo.error) {
+    demo.start();
+} else {
+    console.error(demo.error);
+}
 
-
-//Well Done!
 
 
 
