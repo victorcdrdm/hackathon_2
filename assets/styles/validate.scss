@@ -25,3 +25,12 @@
   margin-left: 30px;
 }
 
+.btn-croix:hover {
+  transition: 350ms ease-in;
+  background: red;
+}
+.btn-coeur:hover{
+  transition: 350ms ease-in;
+  background: green;
+}
+
