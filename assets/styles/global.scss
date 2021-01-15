@@ -3,6 +3,7 @@ body{
   margin-top: 100px;
   margin-bottom: 50px;
   color:white;
+  margin-bottom: 50px;
   font-family: 'Cairo', sans-serif;
 }
 
@@ -105,5 +106,12 @@ body{
 button {
   font-weight: bold;
 }
+
+.green {
+  color: $green;
+  font-weight: bold;
+}
+
+
 
 
