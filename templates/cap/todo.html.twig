@@ -11,7 +11,7 @@
         </div>
         <h2 class="cap">{{ defi.title }}</h2>
         <div class="color-white pb-2" style="height: 233px;">
-        <div class="cast-bloc">
+        <div class="cast-bloc" style="height: 233px;">
         <h4 class="pt-4">envoyé par : {{ creator.username }}</h4>
         <p class="mt-3 ml-5 mr-5">{{ defi.description }}</p>
         <div class="mt-3 pb-4">nombre de point pour ce défi : <span>{{ defi.point }}</span></div>
@@ -19,7 +19,7 @@
         <div class="cap-todo pb-4">
             {{ form_start(form) }}
             {{ form_widget(form) }}
-            <div class="btn-simple mt-3" id="todo-button">C'est réussi ?</div>
+            <div class="btn-simple mt-5" id="todo-button">C'est réussi ?</div>
             <button class="btn-simple btn-subimited mt-3 ml-5" type="submit">Valider</button>
             {{ form_end(form) }}
         </div>
