@@ -1,0 +1,7 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        defi_image:
+            uri_prefix: /defis/images
+            upload_destination: '%upload_directory%'
