@@ -11,6 +11,7 @@ use App\Form\ValidateType;
 use App\Repository\ChallengeRepository;
 use App\Repository\DefiRepository;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -84,7 +85,8 @@ class CapController extends AbstractController
     public function toDo(Request $request, int $id ,
                          ChallengeRepository $challengeRepository,
                          UserRepository $userRepository,
-                         DefiRepository $defiRepository): Response
+                         DefiRepository $defiRepository,
+                         EntityManagerInterface $entityManager): Response
     {
         $challenge = $challengeRepository->findOneBy(['id'=> $id]);
         $creator = $userRepository->findOneBy(['id' => $challenge->getCreator()]);
@@ -92,15 +94,12 @@ class CapController extends AbstractController
         $form = $this->createForm(SucesseType::class);
         $form->handleRequest($request);
 
-
         if($form->isSubmitted() && $form->isValid()) {
-            $challengeDown = new Challenge();
             $challengeDown = $form->getData();
-            $challenge->setUrl($challengeDown->getUrl());
+            $challenge->setImage($challengeDown->getImageFile());
+            $challenge->setImageFile($challengeDown->getImageFile());
             $challenge->setIsSuccess(true);
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->flush($challenge);
-
+            $entityManager->flush();
             return $this->redirectToRoute('profile');
         }
 

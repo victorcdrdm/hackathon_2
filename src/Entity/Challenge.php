@@ -4,9 +4,13 @@ namespace App\Entity;
 
 use App\Repository\ChallengeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ChallengeRepository::class)
+ * @Vich\Uploadable
  */
 class Challenge
 {
@@ -42,12 +46,23 @@ class Challenge
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $url;
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="defi_image", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $isValid;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updatedAt;
 
     public function getId(): ?int
     {
@@ -102,16 +117,35 @@ class Challenge
         return $this;
     }
 
-    public function getUrl(): ?string
+    /**
+     * @param File $imageFile
+     * @return Challenge
+     */
+    public function setImageFile(File $image = null): Challenge
     {
-        return $this->url;
+        $this->imageFile = $image;
+        if ($image) {
+            $this->updatedAt = new \DateTime('now');
+        }
+        return $this;
     }
 
-    public function setUrl(?string $url): self
+    /**
+     * @return File
+     */
+    public function getImageFile(): ?File
     {
-        $this->url = $url;
+        return $this->imageFile;
+    }
 
-        return $this;
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage($image): void
+    {
+        $this->image = $image;
     }
 
     public function getIsValid(): ?bool
@@ -122,6 +156,18 @@ class Challenge
     public function setIsValid(?bool $isValid): self
     {
         $this->isValid = $isValid;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
