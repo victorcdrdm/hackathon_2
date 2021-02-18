@@ -50,7 +50,6 @@
     margin-left: 50px;
   }
 
-
   .logo {
     width: 80px;
     height: 80px;
@@ -103,5 +102,18 @@
 #countup {
   font-size: 40px;
   font-weight: bold;
+}
+
+@media screen and (min-width: 1024px) {
+
+  .new-game{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
 }
 
