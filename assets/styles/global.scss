@@ -3,7 +3,6 @@ body{
   margin-top: 100px;
   margin-bottom: 50px;
   color:white;
-  margin-bottom: 50px;
   font-family: 'Cairo', sans-serif;
 }
 
@@ -67,6 +66,12 @@ body{
 
 .main-logo {
   height: 40px;
+}
+
+.body-center {
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 /*
 #well-done {

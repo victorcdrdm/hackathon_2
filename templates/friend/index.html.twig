@@ -3,13 +3,12 @@
 {% block title %}Inviter un ami{% endblock %}
 
 {% block body %}
-
     <h1>Trouve ton ami</h1>
-
-    <div class="form-search">
+<div class="d-flex justify-content-center">
+    <div class="form-search flex-column justify-content-center">
         {{ form_start(form) }}
             {{ form_widget(form) }}
-        <button class="search-btn">Rechercher</button>
+        <button class="search-btn flex-column justify-content-center">Rechercher</button>
         {{ form_end(form) }}
     </div>
     <div class="list">
@@ -19,4 +18,6 @@
             </ul>
         {% endfor %}
     </div>
+</div>
+
 {% endblock %}

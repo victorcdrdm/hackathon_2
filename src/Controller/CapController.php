@@ -27,11 +27,9 @@ class CapController extends AbstractController
      */
     public function index(): Response
     {
-
         return $this->render('cap/index.html.twig', [
         ]);
     }
-
 
     /**
      * @Route("/unknown/new", name="unknown_new")
@@ -146,19 +144,14 @@ class CapController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-
-            $challenge->setIsValid(true);
+            $challenge = $challenge->setIsValid(true);
             $user = new User();
             $user = $challenge->getCatcher();
             $newScore = $user->getScore() + $challenge->getDefi()->getPoint();
             $user->setScore($newScore);
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush() ;
-
-
             return $this->redirectToRoute('profile');
-
         }
 
         return $this->render('cap/validate.html.twig',[
@@ -225,8 +218,6 @@ class CapController extends AbstractController
     public function friendNew(Request $request, UserRepository $userRepository, string $idFriend): Response
     {
         $friend = $userRepository->findOneBy(['id' => $idFriend]);
-
-
         $challenge = new Challenge();
         $defi = new Defi();
         $form = $this->createForm(DefiType::class, $defi);
@@ -235,7 +226,6 @@ class CapController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($defi);
             $entityManager->flush();
-
             $challenge->setCreator($this->getUser());
             $challenge->setCatcher($friend);
             $challenge->setDefi($defi);
@@ -245,7 +235,6 @@ class CapController extends AbstractController
             $entityManager->flush();
             return $this->redirectToRoute('profile');
         }
-
         return $this->render('cap/friend-new.html.twig', [
             'form' => $form->createView(),
         ]);
@@ -256,9 +245,7 @@ class CapController extends AbstractController
      */
     public function friendAlea(Request $request, UserRepository $userRepository, string $idFriend): Response
     {
-
         $friend = $userRepository->findOneBy(['id' => $idFriend]);
-
         $defis = $this->getDoctrine()
             ->getRepository(Defi::class)
             ->findAll();
