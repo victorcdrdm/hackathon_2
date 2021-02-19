@@ -36,6 +36,7 @@ class CapController extends AbstractController
      */
     public function unknownNew(Request $request): Response
     {
+
         $unknownUsers = $this->getDoctrine()
             ->getRepository(User::class)
             ->findAll();

@@ -23,15 +23,7 @@ class DefiType extends AbstractType
             ->add('description', TextareaType::class, [
                 'label' => 'Description'
             ])
-            ->add('format', ChoiceType::class, [
-                'label' => 'Document demandé',
-                'choices' => [
-                    ''      => '',
-                    'Vidéo' => 'Vidéo',
-                    'Photo' => 'Photo',
-                    'Son'   => 'Son',
-                ],
-            ])
+
             ->add('point', IntegerType::class, [
                 'label' => 'Points'
             ])
