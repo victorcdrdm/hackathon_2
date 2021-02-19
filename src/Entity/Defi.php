@@ -10,9 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Defi
 {
-    public const FORMAT_AUDIO = 'audio';
-    public const FORMAT_VIDEO = 'video';
-    public const FORMAT_PICTURE = 'picture';
 
     /**
      * @ORM\Id
@@ -36,10 +33,6 @@ class Defi
      */
     private $point;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $format;
 
     public function getId(): ?int
     {
@@ -82,15 +75,4 @@ class Defi
         return $this;
     }
 
-    public function getFormat(): ?string
-    {
-        return $this->format;
-    }
-
-    public function setFormat(string $format): self
-    {
-        $this->format = $format;
-
-        return $this;
-    }
 }
