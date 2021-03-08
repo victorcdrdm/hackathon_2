@@ -38,7 +38,7 @@ class ChallengeFixtures extends Fixture implements DependentFixtureInterface
         $challenge->setCatcher($this->getReference('user_' . 55));
         $challenge->setCreator($this->getReference('user_' . 46));
         $challenge->setDefi($this->getReference('defi_' . 2));
-            $challenge->setUrl('https://2.bp.blogspot.com/_9Z9Hsy423eg/TR0bTVkvT4I/AAAAAAAAAR0/POstZXmBl-E/s1600/IMG_0384.JPG');
+            $challenge->setImage('https://2.bp.blogspot.com/_9Z9Hsy423eg/TR0bTVkvT4I/AAAAAAAAAR0/POstZXmBl-E/s1600/IMG_0384.JPG');
         $challenge->setIsSuccess(1);
         $manager->persist($challenge);
 
@@ -46,7 +46,7 @@ class ChallengeFixtures extends Fixture implements DependentFixtureInterface
         $challenge->setCatcher($this->getReference('user_' . 57));
         $challenge->setCreator($this->getReference('user_' . 46));
         $challenge->setDefi($this->getReference('defi_' . 3));
-        $challenge->setUrl('https://static.hitek.fr/img/up_m/1686087778/hitekz42autraliensdeguisementssortiespoubellesconfinement75.jpg');
+        $challenge->setImage('https://static.hitek.fr/img/up_m/1686087778/hitekz42autraliensdeguisementssortiespoubellesconfinement75.jpg');
         $challenge->setIsSuccess(1);
         $manager->persist($challenge);
 
@@ -54,7 +54,7 @@ class ChallengeFixtures extends Fixture implements DependentFixtureInterface
         $challenge->setCatcher($this->getReference('user_' . 51));
         $challenge->setCreator($this->getReference('user_' . 46));
         $challenge->setDefi($this->getReference('defi_' . 6));
-        $challenge->setUrl('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/I_woke_up_looking_this_good.jpg/286px-I_woke_up_looking_this_good.jpg');
+        $challenge->setImage('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/I_woke_up_looking_this_good.jpg/286px-I_woke_up_looking_this_good.jpg');
         $challenge->setIsSuccess(1);
         $manager->persist($challenge);
 
@@ -69,7 +69,7 @@ class ChallengeFixtures extends Fixture implements DependentFixtureInterface
         $challenge->setCatcher($this->getReference('user_' . 46));
         $challenge->setCreator($this->getReference('user_' . 49));
         $challenge->setDefi($this->getReference('defi_' . 10));
-        $challenge->setUrl('https://nsa40.casimages.com/img/2021/01/14//210114072101102679.jpg' );
+        $challenge->setImage('https://nsa40.casimages.com/img/2021/01/14//210114072101102679.jpg' );
         $challenge->setIsSuccess(1);
         $manager->persist($challenge);
 

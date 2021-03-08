@@ -4,27 +4,30 @@
 
 {% block body %}
     <div class="card-defi margin-top d-flex flex-column justify-content-center align-items-center">
-
         <h2 class="cap">{{ challenge.defi.title}}</h2>
         <div class="color-white">
-        <div class="cast-bloc">
-        <h4 class="pt-4">Envoyé à : {{ challenge.catcher.username }}</h4>
-        <p class="mt-3 ml-5 mr-5">{{ challenge.defi.description }}</p>
-        <img style="width: 350px" src="{{ challenge.url}}" alt="{{ challenge.url}}">
-        <div class="mt-3 pb-4">Nombre de points pour ce défi: <span>{{ challenge.defi.point }}</span></div>
+            <div class="cast-bloc">
+                <h4 class="pt-4">Envoyé à : {{ challenge.catcher.username }}</h4>
+                <p class="mt-3 ml-5 mr-5">{{ challenge.defi.description }}</p>
+                <img style="width: 350px" src="/defis/{{ challenge.image}}" alt="{{ challenge.image}}">
+                <div class="mt-3 pb-4">Nombre de points pour ce défi: <span>{{ challenge.defi.point }}</span></div>
+            </div>
         </div>
+        <div class="cap-todo d-none">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
         </div>
+        {% if challenge.isValid == null %}
+        <div class="buttons-band">
+            <button class="btn-coeur" type="submit"></button>
+            {{ form_end(form) }}
+            <a href="{{ path('profile') }}">
+                <button class="btn-croix"></button>
+            </a>
+        </div>
+        {% else %}
+        <p>Ce défi a déjà êtait validé</p>
+        <a href="{{ path('profile') }}">retour à la page profile</a>
+        {% endif %}
     </div>
-<div class="cap-todo d-none">
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-</div>
-    <button class="btn-coeur" type="submit"></button>
-    {{ form_end(form) }}
-</div>
-    <a href="{{ path('profile') }}">
-        <button class="btn-croix"></button>
-    </a>
-
-
 {% endblock %}

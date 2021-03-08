@@ -20,9 +20,10 @@ require('bootstrap');
 
 $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
+
     //Well Done!
     const wellDone = document.getElementById('well-done');
-    const img = document.getElementById('well-done-image')
+    const img = document.getElementById('well-done-image');
     const button = document.getElementById('todo-button');
 
     button.addEventListener("click", () => {
@@ -31,15 +32,16 @@ $(document).ready(function() {
     wellDone.addEventListener("click", () => {
         wellDone.classList.remove('d-flex-well');
     })
-});
 
+
+});
 
 //Count up
 let userScore = document.getElementById('user-score');
 let score     = userScore.innerHTML;
 
 const options = {
-    separator: '  ',
+    separator: ' ',
 };
 let demo = new CountUp('countup', score, options);
 if (!demo.error) {
@@ -47,6 +49,8 @@ if (!demo.error) {
 } else {
     console.error(demo.error);
 }
+
+
 
 
 

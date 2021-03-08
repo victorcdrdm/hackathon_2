@@ -1,8 +1,8 @@
 body{
   background-color: $dark-blue;
   margin-top: 100px;
-  color:white;
   margin-bottom: 50px;
+  color:white;
   font-family: 'Cairo', sans-serif;
 }
 
@@ -67,6 +67,12 @@ body{
 .main-logo {
   height: 40px;
 }
+
+.body-center {
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
 /*
 #well-done {
   height: 100vh;
@@ -94,7 +100,7 @@ body{
 }
 .d-flex-well{
   opacity: 100%;
-  transition: ease-in 1200mS;
+  transition: ease-in 652ms;
 }
 
 .btn-subimited{

@@ -25,7 +25,6 @@ class FriendController extends AbstractController
         } else {
             $friends = [];
         }
-
         return $this->render('friend/index.html.twig', [
             'friends' => $friends,
             'form' => $form->createView(),

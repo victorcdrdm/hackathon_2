@@ -11,6 +11,7 @@ use App\Form\ValidateType;
 use App\Repository\ChallengeRepository;
 use App\Repository\DefiRepository;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,17 +27,16 @@ class CapController extends AbstractController
      */
     public function index(): Response
     {
-
         return $this->render('cap/index.html.twig', [
         ]);
     }
-
 
     /**
      * @Route("/unknown/new", name="unknown_new")
      */
     public function unknownNew(Request $request): Response
     {
+
         $unknownUsers = $this->getDoctrine()
             ->getRepository(User::class)
             ->findAll();
@@ -84,7 +84,8 @@ class CapController extends AbstractController
     public function toDo(Request $request, int $id ,
                          ChallengeRepository $challengeRepository,
                          UserRepository $userRepository,
-                         DefiRepository $defiRepository): Response
+                         DefiRepository $defiRepository,
+                         EntityManagerInterface $entityManager): Response
     {
         $challenge = $challengeRepository->findOneBy(['id'=> $id]);
         $creator = $userRepository->findOneBy(['id' => $challenge->getCreator()]);
@@ -92,15 +93,12 @@ class CapController extends AbstractController
         $form = $this->createForm(SucesseType::class);
         $form->handleRequest($request);
 
-
         if($form->isSubmitted() && $form->isValid()) {
-            $challengeDown = new Challenge();
             $challengeDown = $form->getData();
-            $challenge->setUrl($challengeDown->getUrl());
+            $challenge->setImage($challengeDown->getImageFile());
+            $challenge->setImageFile($challengeDown->getImageFile());
             $challenge->setIsSuccess(true);
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->flush($challenge);
-
+            $entityManager->flush();
             return $this->redirectToRoute('profile');
         }
 
@@ -147,19 +145,14 @@ class CapController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-
-            $challenge->setIsValid(true);
+            $challenge = $challenge->setIsValid(true);
             $user = new User();
             $user = $challenge->getCatcher();
             $newScore = $user->getScore() + $challenge->getDefi()->getPoint();
             $user->setScore($newScore);
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush() ;
-
-
             return $this->redirectToRoute('profile');
-
         }
 
         return $this->render('cap/validate.html.twig',[
@@ -226,8 +219,6 @@ class CapController extends AbstractController
     public function friendNew(Request $request, UserRepository $userRepository, string $idFriend): Response
     {
         $friend = $userRepository->findOneBy(['id' => $idFriend]);
-
-
         $challenge = new Challenge();
         $defi = new Defi();
         $form = $this->createForm(DefiType::class, $defi);
@@ -236,7 +227,6 @@ class CapController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($defi);
             $entityManager->flush();
-
             $challenge->setCreator($this->getUser());
             $challenge->setCatcher($friend);
             $challenge->setDefi($defi);
@@ -246,7 +236,6 @@ class CapController extends AbstractController
             $entityManager->flush();
             return $this->redirectToRoute('profile');
         }
-
         return $this->render('cap/friend-new.html.twig', [
             'form' => $form->createView(),
         ]);
@@ -257,9 +246,7 @@ class CapController extends AbstractController
      */
     public function friendAlea(Request $request, UserRepository $userRepository, string $idFriend): Response
     {
-
         $friend = $userRepository->findOneBy(['id' => $idFriend]);
-
         $defis = $this->getDoctrine()
             ->getRepository(Defi::class)
             ->findAll();
