@@ -113,7 +113,11 @@
     left: 0;
     right: 0;
     text-align: center;
+    max-width: 20%;
   }
+}
 
+.banner-link:hover {
+  text-decoration: none;
 }
 
