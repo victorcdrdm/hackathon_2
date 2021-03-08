@@ -1,5 +1,11 @@
 <div class="nav fixed-top d-flex justify-content-between">
-    <a class="logo-link" href="{{ path('start') }}">
+    <a class="logo-link" href="
+        {% if reg_log is defined %}
+            {{ path('home') }}
+        {% else %}
+            {{ path('start') }}
+        {% endif %}
+    ">
         <div class="logo row align-items-center justify-content-center font-weight-bold">
             <div class="d-flex justify-content-center align-items-center">
                 <img class= "main-logo" src="{{ asset('build/images/logo.png') }}" alt="Logo-cap"/>
@@ -8,7 +14,11 @@
     </a>
     <div class="connection d-flex justify-content-center align-items-center">
         <div>
-            <a class= "connection-link" href="{{ path('home') }}">Déconnexion</a>
+            {% if reg_log is defined %}
+                <a class= "connection-link" href="{{ path('home') }}">Connexion</a>
+            {% else %}
+                <a class= "connection-link" href="{{ path('home') }}">Déconnexion</a>
+            {% endif %}
         </div>
     </div>
 </div>
